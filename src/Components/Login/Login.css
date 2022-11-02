@@ -1,0 +1,53 @@
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+
+.login_box{
+    width:100%;
+    height:80%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.login_form{
+    width:50%;
+    height:100%;
+}
+
+.login_main_form{
+    height:40%;
+    /* width:60%;  
+    margin:auto; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.username{
+    margin:15px;
+}
+.password{
+    margin:15px;
+}
+
+ img{
+    width:50%;
+    height:100%;
+}
+
+h2{
+    margin-top: 50px;
+    font-size: 2.5rem;
+}
+
+.MuiOutlinedInput-root:hover
+{
+   outline: none;
+}
+
+
