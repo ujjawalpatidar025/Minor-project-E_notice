@@ -10,8 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-
+import AllInclusiveIcon from '@material-ui/icons/AllInclusive';
 import IconButton from '@material-ui/core/IconButton';
+import ErrorIcon from '@material-ui/icons/Error';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -21,6 +22,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import WidgetsIcon from '@material-ui/icons/Widgets';
+import GroupIcon from '@material-ui/icons/Group';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import './Homepage.css';
 import { Link } from '@material-ui/core';
@@ -31,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     display: 'flex',
+    zIndex:'10',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -154,12 +160,12 @@ export default function Homepage() {
             <MenuIcon />
           </IconButton>
           <div className='center_heading'>
-            <NotificationsActiveIcon className='notification_icon' />
+            {/* <NotificationsActiveIcon className='notification_icon' /> */}
             <Typography variant="h5" noWrap>
 
               Indore Institute E-Notice Portal
             </Typography>
-            <NotificationsActiveIcon className='notification_icon' />
+            {/* <NotificationsActiveIcon className='notification_icon' /> */}
           </div>
           <div className="right_nav">
 
@@ -206,19 +212,19 @@ export default function Homepage() {
           ))} */}
 
           <ListItem button key='All' >
-            <ListItemIcon><InboxIcon /> </ListItemIcon>
+            <ListItemIcon><AllInclusiveIcon/> </ListItemIcon>
             <ListItemText primary='All' />
           </ListItem>
           <ListItem button key='Academic'>
-            <ListItemIcon><MailIcon /> </ListItemIcon>
+            <ListItemIcon><MenuBookIcon /> </ListItemIcon>
             <ListItemText primary='Academic' />
           </ListItem>
           <ListItem button key='Social'>
-            <ListItemIcon><InboxIcon /> </ListItemIcon>
+            <ListItemIcon><WidgetsIcon /> </ListItemIcon>
             <ListItemText primary='Social' />
           </ListItem>
           <ListItem button key='Community'>
-            <ListItemIcon><MailIcon /> </ListItemIcon>
+            <ListItemIcon><GroupIcon /> </ListItemIcon>
             <ListItemText primary='Community' />
           </ListItem>
         </List>
@@ -232,11 +238,11 @@ export default function Homepage() {
             
           ))} */}
           <ListItem button key='Spam'>
-            <ListItemIcon><InboxIcon /> </ListItemIcon>
+            <ListItemIcon><ErrorIcon /> </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItem>
           <ListItem button key='Login'>
-            <ListItemIcon><MailIcon /> </ListItemIcon>
+            <ListItemIcon><VpnKeyIcon /> </ListItemIcon>
             <ListItemText primary='Login' />
           </ListItem>
         </List>
