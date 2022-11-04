@@ -10,6 +10,9 @@ import {
 }   
 from 'react-router-dom'; 
 import Landing from './Components/Landingpage/Landing.jsx';
+import Notice from './Components/Common/Notice';
+import Accordian from './Components/Common/Accordian';
+import NoticeBox from './Components/Common/NoticeBox';
 
 function App() {
   return (
@@ -20,8 +23,10 @@ function App() {
       <Routes>
         <Route exact='true' path='/' element={< Landing />}></Route>
         <Route exact='true' path='/login' element={< Login />}></Route>
+
+        <Route exact='true' path='/Academic' element={<NoticeBox/>}></Route>
+        
       </Routes>
-      
      
     </div>
   );
