@@ -24,6 +24,8 @@ import Button from '@material-ui/core/Button';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import './Homepage.css';
 import { Link } from '@material-ui/core';
+import '../Addnoticepage/Addnoticepage.css';
+import Close from '@material-ui/icons/Close';
 
 const drawerWidth = 240;
 
@@ -127,11 +129,19 @@ export default function Homepage() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
 
-
+  const show = () => {
+    document.getElementById('addNoticeBox').style.display = 'flex';
+  }
+  const off = () => {
+    document.getElementById('addNoticeBox').style.display = 'none';
+}
+  
 
   
   return (
+    <>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
@@ -164,7 +174,7 @@ export default function Homepage() {
           <div className="right_nav">
 
             
-            <Fab color="primary" aria-label="add">
+            <Fab color="primary" aria-label="add" onClick={show}>
               <AddIcon />
             </Fab>
 
@@ -242,6 +252,16 @@ export default function Homepage() {
         </List>
       </Drawer>
 
+     
     </div>
+     {/* ////////////////// Add Notice Box ////////////////// */}
+     <div className='add-Notice-box' id='addNoticeBox'>
+      <div className='notice-box'>
+      <Close  onClick={off}/>
+        <h1>Hello</h1>
+      </div>
+     
+   </div>
+   </>
   );
 }
