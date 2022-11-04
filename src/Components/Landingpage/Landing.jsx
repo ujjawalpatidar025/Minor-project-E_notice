@@ -26,7 +26,7 @@ const Landing = () => {
           </div>
         </Collapse>
         <button className="arrow-btn">
-        <a href="/home"><ExpandMore style={{fontSize:'3rem'}}/></a>
+        <a href="/Academic"><ExpandMore style={{fontSize:'3rem'}}/></a>
         </button>
       </div>
     </div>

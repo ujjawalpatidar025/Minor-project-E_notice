@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     display: 'flex',
-    // zIndex:'1',
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
