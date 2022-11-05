@@ -28,13 +28,41 @@ import GroupIcon from '@material-ui/icons/Group';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import './Homepage.css';
-import { Link } from '@material-ui/core';
+import { InputLabel, Link } from '@material-ui/core';
 import './Addnoticepage.css';
 import Close from '@material-ui/icons/Close';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const drawerWidth = 240;
 
+
+const categories = [
+  {
+    value: 'All',
+    label: 'All',
+  },
+  {
+    value: 'Academic',
+    label: 'Academic',
+  },
+  {
+    value: 'Social',
+    label: 'Social',
+  },
+  {
+    value: 'Culture',
+    label: 'Culture',
+  },
+];
+
 const useStyles = makeStyles((theme) => ({
+  rootForm: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
   root: {
     position: 'fixed',
     display: 'flex',
@@ -127,6 +155,11 @@ export default function Homepage() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [category, setCategory] = React.useState('EUR');
+
+  const handleChange = (event) => {
+    setCategory(event.target.value);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -135,6 +168,7 @@ export default function Homepage() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  
   
 
   const show = () => {
@@ -276,7 +310,37 @@ export default function Homepage() {
         <div className="notice-box">
           <div className="addnotice-heading">
             <h1>Add Notice</h1>
-            <Close onClick={off} fontSize='4rem' />
+            <Close onClick={off} style={{cursor:'pointer'}} />
+          </div>
+          <div className="notice-form-section">
+            <form noValidate className={classes.rootForm} autoComplete="off">
+              <div className='notice-form-input'>
+              <TextField id="standard-basic" select label="Select Category">
+                {categories.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField id="organization" label="Enter Organization" />
+              <TextField id="title" label="Title" />
+              <TextField id="subtitle" label="Sub Title" />
+              </div>
+              <div className='textarea-my'>
+              <TextField id="outlined-multiline-static"  label="Write Message" multiline rows={5}/>
+              </div>
+              <div className='upload-input'>
+                <InputLabel>Upload Image/Video</InputLabel>
+                <input id="choose image/video"  type='file'/>
+              </div>
+              <div className='add-notice'>
+              <Button variant="contained" color="primary" className="submitbtn">
+                 Add Notice
+               </Button>
+              </div>
+            
+            
+            </form>
           </div>
         </div>
       </div>
