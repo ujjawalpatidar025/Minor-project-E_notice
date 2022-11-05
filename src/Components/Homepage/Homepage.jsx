@@ -29,7 +29,7 @@ import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import './Homepage.css';
 import { Link } from '@material-ui/core';
-import '../Addnoticepage/Addnoticepage.css';
+import './Addnoticepage.css';
 import Close from '@material-ui/icons/Close';
 
 const drawerWidth = 240;
@@ -141,133 +141,145 @@ export default function Homepage() {
     document.getElementById('addNoticeBox').style.display = 'flex';
   }
   const off = () => {
-    document.getElementById('addNoticeBox').style.display = 'none';
-}
+    document.getElementById("addNoticeBox").style.display = "none";
+  };
   
 
   
   return (
     <>
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-        backgroundColor="red"
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-          >
-            <MenuIcon />
-          </IconButton>
-          <div className='center_heading'>
-            {/* <NotificationsActiveIcon className='notification_icon' /> */}
-            <Typography variant="h5" noWrap>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open,
+          })}
+          backgroundColor="red"
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, {
+                [classes.hide]: open,
+              })}
+            >
+              <MenuIcon />
+            </IconButton>
+            <div className="center_heading">
+              {/* <NotificationsActiveIcon className='notification_icon' /> */}
+              <Typography variant="h5" noWrap>
+                Indore Institute E-Notice Portal
+              </Typography>
+              {/* <NotificationsActiveIcon className='notification_icon' /> */}
+            </div>
+            <div className="right_nav">
+              <Fab color="primary" aria-label="add" onClick={show}>
+                <AddIcon />
+              </Fab>
 
-              Indore Institute E-Notice Portal
-            </Typography>
-            {/* <NotificationsActiveIcon className='notification_icon' /> */}
-          </div>
-          <div className="right_nav">
-
-            
-            <Fab color="primary" aria-label="add" onClick={show}>
-              <AddIcon />
-            </Fab>
-
-            <a href='/login' className='login_a'><Button variant="contained" color="primary" disableElevation  >
-              Login
-            </Button></a>
-          </div>
-
-        </Toolbar>
-
-
-
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
+              <a href="/login" className="login_a">
+                <Button variant="contained" color="primary" disableElevation>
+                  Login
+                </Button>
+              </a>
+            </div>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open,
-          }),
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {/* {['All', 'Academic', 'Social', 'Community'].map((text, index) => (
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open,
+            }),
+          }}
+        >
+          <div className={classes.toolbar}>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            {/* {['All', 'Academic', 'Social', 'Community'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))} */}
 
-          <ListItem button key='All' >
-            <ListItemIcon><AllInclusiveIcon/> </ListItemIcon>
-            <ListItemText primary='All' />
-          </ListItem>
-          <ListItem button key='Academic'>
-            <ListItemIcon><MenuBookIcon /> </ListItemIcon>
-            <ListItemText primary='Academic' />
-          </ListItem>
-          <ListItem button key='Social'>
-            <ListItemIcon><WidgetsIcon /> </ListItemIcon>
-            <ListItemText primary='Social' />
-          </ListItem>
-          <ListItem button key='Community'>
-            <ListItemIcon><GroupIcon /> </ListItemIcon>
-            <ListItemText primary='Community' />
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          {/* {[ 'Spam', 'Login'].map((text, index) => (
+            <ListItem button key="All">
+              <ListItemIcon>
+                <AllInclusiveIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="All" />
+            </ListItem>
+            <ListItem button key="Academic">
+              <ListItemIcon>
+                <MenuBookIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="Academic" />
+            </ListItem>
+            <ListItem button key="Social">
+              <ListItemIcon>
+                <WidgetsIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="Social" />
+            </ListItem>
+            <ListItem button key="Community">
+              <ListItemIcon>
+                <GroupIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="Community" />
+            </ListItem>
+          </List>
+          <Divider />
+          <List>
+            {/* {[ 'Spam', 'Login'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
             
           ))} */}
-          <ListItem button key='Spam'>
-            <ListItemIcon><ErrorIcon /> </ListItemIcon>
-            <ListItemText primary='Spam' />
-          </ListItem>
-          <ListItem button key='Login'>
-            <ListItemIcon><VpnKeyIcon /> </ListItemIcon>
-            <ListItemText primary='Login' />
-          </ListItem>
-        </List>
-      </Drawer>
-
-     
-    </div>
-     {/* ////////////////// Add Notice Box ////////////////// */}
-     <div className='add-Notice-box' id='addNoticeBox'>
-      <div className='notice-box'>
-      <Close  onClick={off}/>
-        <h1>Hello</h1>
+            <ListItem button key="Spam">
+              <ListItemIcon>
+                <ErrorIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="Spam" />
+            </ListItem>
+            <ListItem button key="Login">
+              <ListItemIcon>
+                <VpnKeyIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+            </ListItem>
+          </List>
+        </Drawer>
       </div>
-     
-   </div>
-   </>
+
+      {/* ////////////////// Add Notice Box ////////////////// */}
+
+      <div className="add-Notice-box" id="addNoticeBox">
+        <div className="notice-box">
+          <div className="addnotice-heading">
+            <h1>Add Notice</h1>
+            <Close onClick={off} fontSize='4rem' />
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
