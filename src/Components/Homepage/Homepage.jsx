@@ -55,6 +55,20 @@ const categories = [
     label: 'Culture',
   },
 ];
+const institutes = [
+  {
+    value: 'IIST',
+    label: 'IIST',
+  },
+  {
+    value: 'IIP',
+    label: 'IIP',
+  },
+  {
+    value: 'IIM',
+    label: 'IIM',
+  },
+];
 
 const useStyles = makeStyles((theme) => ({
   rootForm: {
@@ -156,7 +170,7 @@ export default function Homepage() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState('EUR');
-
+   
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
@@ -315,14 +329,22 @@ export default function Homepage() {
           <div className="notice-form-section">
             <form noValidate className={classes.rootForm} autoComplete="off">
               <div className='notice-form-input'>
-              <TextField id="standard-basic" select label="Select Category">
+              <TextField id="institute" select label="Select Institute">
+              {institutes.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+              <TextField id="branch" label="Enter Branch" required />
+              <TextField id="organization" label="Enter Organization" />
+              <TextField id="cateogory" select label="Select Category">
                 {categories.map((option) => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
                 ))}
               </TextField>
-              <TextField id="organization" label="Enter Organization" />
               <TextField id="title" label="Title" />
               <TextField id="subtitle" label="Sub Title" />
               </div>
@@ -334,7 +356,7 @@ export default function Homepage() {
                 <input id="choose image/video"  type='file'/>
               </div>
               <div className='add-notice'>
-              <Button variant="contained" color="primary" className="submitbtn">
+              <Button type='submit' variant="contained" color="primary" className="submitbtn">
                  Add Notice
                </Button>
               </div>

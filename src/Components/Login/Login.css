@@ -55,7 +55,26 @@
     height:100%;
 }
 
+.errorMsg{
+    width: 100%;
+    color: red;
+    font-size: 0.7rem;
+}
 
+.success-msg{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+    z-index: 1000000000;
+    bottom: 1rem;
+    width: 300px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgb(14, 91, 136);
+    padding: 0.5rem;
+
+}
 
 
 
