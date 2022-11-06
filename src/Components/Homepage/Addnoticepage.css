@@ -55,7 +55,7 @@
     border-radius: 0 !important;
 }
 .notice-form-input >.MuiTextField-root{
-    width: 45% !important ;
+    width: 43% !important ;
 }
 /* .MuiOutlinedInput-root {
     position: relative;
@@ -79,6 +79,9 @@
     display: flex;
     justify-content: space-around;
     float: left;
+}
+.MuiSelect-select.MuiSelect-select{
+    text-align: left;
 }
 @media screen and (max-width:700px){
     .notice-box{

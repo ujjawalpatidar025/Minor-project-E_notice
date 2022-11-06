@@ -49,9 +49,7 @@ const Login = () => {
     const [passwordError, setPasswordError]=useState('');
     const [successMsg, setSuccessMsg]=useState('');
   
-    // const handleChange = (prop) => (event) => {
-    //   setValues({ ...values, [prop]: event.target.value });
-    // };
+    
     const handleEmailChange = (event) => {
       setEmailError('');
       setSuccessMsg('');
@@ -82,10 +80,11 @@ const Login = () => {
         const emailRegex=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if(emailRegex.test(values.email)){
           setEmailError('');
-          if(values.email==='admin@gmail.com'){
+          if(values.email==='vibha@gmail.com'){
             setEmailError('');
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
+              window.location.href='/Academic';
               setSuccessMsg('Login Successfull');
             }else{
               setPasswordError('Incorrect password');
@@ -104,7 +103,6 @@ const Login = () => {
       if(values.password!==''){
         if(values.password==='demo'){
           setValues({ ...values, email:'', password:'' });
-          setSuccessMsg('Login Successfull');
         }else{
           setPasswordError('Incorrect password');
         }
@@ -159,7 +157,7 @@ const Login = () => {
               color="primary"
               className="submitbtn"
             >
-              LOGIN
+            LOGIN
             </Button>
           </form>
         </div>
