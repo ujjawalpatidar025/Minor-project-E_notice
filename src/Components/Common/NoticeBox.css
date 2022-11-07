@@ -1,5 +1,5 @@
 .notice_box{
-    position:absolute;
+    position: relative;
     width:82rem !important;
     min-height:500px;
     background-color: white;

@@ -1,13 +1,17 @@
 import React from 'react'
 import Accordian from './Accordian.jsx';
+import { useContext } from 'react';
 import './NoticeBox.css';
+import {successContext} from '../Login/SuccessContext';
+import SnackBar from '../Login/SnackBar.jsx';
 
+// c;
 const NoticeBox = () => {
   return (
+    <>
+    {/* <div className='notice_box'> */}
 
-    <div className='notice_box'>
-
-      <div className="notice_box_updation">
+      {/* <div className="notice_box_updation">
 
       </div>
       <div className="accordian_box">
@@ -26,8 +30,8 @@ const NoticeBox = () => {
       <Accordian/>
       </div>
       
-    </div>
-    
+    </div> */}
+    </>
 
   )
 }

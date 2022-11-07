@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import loginBackground from '../Images/loginBackground.jpeg';
 import './Login.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +14,13 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import { Close } from '@material-ui/icons';
+
+import SnackBar from './SnackBar';
+import NoticeBox from '../Common/NoticeBox';
+import App from '../../App';
+import Notice from '../Common/Notice';
+import Homepage from '../Homepage/Homepage.jsx';
+// import {Success} from './SuccessContext';
 
 
 
@@ -34,10 +40,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
   
- 
-   
-
 const Login = () => {
+  
     const classes = useStyles();
   
     const [values, setValues] = React.useState({
@@ -47,7 +51,7 @@ const Login = () => {
     });
     const [emailError, setEmailError]=useState('');
     const [passwordError, setPasswordError]=useState('');
-    const [successMsg, setSuccessMsg]=useState('');
+    const [successMsg, setSuccessMsg]=useState('Login Successfull');
   
     
     const handleEmailChange = (event) => {
@@ -70,9 +74,7 @@ const Login = () => {
       event.preventDefault();
     };
 
-    const closeSuccessMsg=()=>{
-       document.getElementById('success-msg').style.display='none';
-    }
+    
 
     const handleFormSubmit=(e)=>{
       e.preventDefault();
@@ -84,8 +86,8 @@ const Login = () => {
             setEmailError('');
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
-              window.location.href='/Academic';
               setSuccessMsg('Login Successfull');
+              window.location.href='/Academic';
             }else{
               setPasswordError('Incorrect password');
             }
@@ -116,7 +118,7 @@ const Login = () => {
   
   return (
     <>
-    {successMsg&&<div className='success-msg' id='success-msg'>{successMsg} <Close onClick={closeSuccessMsg}/> </div>}
+    {/* <Success successMsg={successMsg}/> */}
     <div className="login">
       <div className="login_box">
         <div className="login_form">
@@ -168,5 +170,4 @@ const Login = () => {
     </>
   );
 }
-
 export default Login;

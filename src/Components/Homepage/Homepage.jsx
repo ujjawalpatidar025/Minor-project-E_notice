@@ -33,7 +33,10 @@ import './Addnoticepage.css';
 import Close from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+// import {successContext} from '../Login/SuccessContext';
 
+import SnackBar from '../Login/SnackBar';
+import { useContext } from 'react';
 const drawerWidth = 240;
 
 
@@ -165,7 +168,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Homepage() {
+export default function Homepage({success}) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -192,7 +195,7 @@ export default function Homepage() {
     document.getElementById("addNoticeBox").style.display = "none";
   };
   
-
+  
   
   return (
     <>

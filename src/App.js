@@ -13,12 +13,15 @@ import Landing from './Components/Landingpage/Landing.jsx';
 import Notice from './Components/Common/Notice';
 import Accordian from './Components/Common/Accordian';
 import NoticeBox from './Components/Common/NoticeBox';
+// import { successContext } from './Components/Login/Login.jsx';
+// import {Success} from './Components/Login/SuccessContext'
 
 function App() {
   return (
     
-
+   
     <div className="App">
+      
       <Homepage/>
       <Routes>
         <Route exact='true' path='/' element={< Landing />}></Route>
@@ -27,7 +30,7 @@ function App() {
         <Route exact='true' path='/Academic' element={<NoticeBox/>}></Route>
         
       </Routes>
-     
+      
     </div>
   );
 }
