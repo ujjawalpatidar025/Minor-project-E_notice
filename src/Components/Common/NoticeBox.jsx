@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Accordian from './Accordian.jsx';
-import { useContext } from 'react';
 import './NoticeBox.css';
-import {successContext} from '../Login/SuccessContext';
 import SnackBar from '../Login/SnackBar.jsx';
+import { SuccessContext } from '../Login/SuccessProvider.jsx';
 
 // c;
-const NoticeBox = () => {
+const NoticeBox = ({loginSuccess}) => {
+  const [val, setSuccess]=useContext(SuccessContext);
   return (
     <>
+    {val&&<SnackBar/>}
     {/* <div className='notice_box'> */}
 
       {/* <div className="notice_box_updation">

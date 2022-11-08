@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, {useContext, useState } from 'react'
 import loginBackground from '../Images/loginBackground.jpeg';
 import './Login.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,13 +14,9 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-
 import SnackBar from './SnackBar';
-import NoticeBox from '../Common/NoticeBox';
-import App from '../../App';
-import Notice from '../Common/Notice';
-import Homepage from '../Homepage/Homepage.jsx';
-// import {Success} from './SuccessContext';
+import { SuccessContext } from './SuccessProvider';
+
 
 
 
@@ -40,10 +36,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
   
+
+
 const Login = () => {
+ 
   
     const classes = useStyles();
-  
+    const [val, setSuccess]=useContext(SuccessContext)
     const [values, setValues] = React.useState({
       email: '',
       password: '',
@@ -51,22 +50,28 @@ const Login = () => {
     });
     const [emailError, setEmailError]=useState('');
     const [passwordError, setPasswordError]=useState('');
-    const [successMsg, setSuccessMsg]=useState('Login Successfull');
+    const [successMsg, setSuccessMsg]=useState('');
   
     
     const handleEmailChange = (event) => {
       setEmailError('');
       setSuccessMsg('');
+      // setloginSuccess(false);
+      setSuccess('');
       setValues({ ...values, email: event.target.value });
     };
     const handlePasswordChange = (prop)=> (event) => {
       setPasswordError('');
       setSuccessMsg('');
+      // setloginSuccess(false);
+      setSuccess('')
       setValues({ ...values, [prop]: event.target.value });
     };
     const handleClickShowPassword = () => {
       setEmailError('');
       setSuccessMsg('');
+      // setloginSuccess(false);
+      setSuccess('');
       setValues({ ...values, showPassword: !values.showPassword });
     };
   
@@ -87,7 +92,9 @@ const Login = () => {
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
               setSuccessMsg('Login Successfull');
-              window.location.href='/Academic';
+              // setloginSuccess(true);
+              setSuccess('Login Successfull');
+              // window.location.href='/Academic';
             }else{
               setPasswordError('Incorrect password');
             }
@@ -118,10 +125,12 @@ const Login = () => {
   
   return (
     <>
-    {/* <Success successMsg={successMsg}/> */}
+    {/* {console.log()} */}
+    {val&&<SnackBar/>}
     <div className="login">
       <div className="login_box">
-        <div className="login_form">
+        {val&&<h1 style={{color:'rgb(79 29 126 / 86%)', textAlign:'center'}}>You Are Already Logged In</h1>}
+        {!val&&(<div className="login_form">
           <div className="heading-login">
             <AccountCircleIcon />
             <h1>Admin Login</h1>
@@ -162,7 +171,7 @@ const Login = () => {
             LOGIN
             </Button>
           </form>
-        </div>
+        </div>)}
         <img src={loginBackground}></img>
       </div>
       

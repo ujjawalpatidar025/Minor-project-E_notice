@@ -1,6 +1,4 @@
-import React from 'react'
-
-import NoticeBox from '../Common/NoticeBox';
+import React from 'react';
 import { Close } from '@material-ui/icons';
 
 const style={
@@ -14,7 +12,7 @@ const style={
     width: '300px',
     cursor: 'pointer',
     color: '#ffffff',
-    backgroundColor: 'rgb(14, 91, 136)',
+    backgroundColor: '#602f8edc ',
     padding: '1rem',
   },
 
@@ -25,22 +23,22 @@ const closeSuccessMsg=()=>{
 }
 
 
-function SnackBar({success}) {
+function SnackBar() {
   return (
     <>
       {
       setTimeout(() => {
         const box = document.getElementById("success-msg");
         box.style.display = "none"; 
-      }, 1000)
+      }, 5000)
       }
 
-      {/* <div className='outer' style={style.outer}> */}
-      <div className='success-msg' id='success-msg' style={style.success}>{success} <Close onClick={closeSuccessMsg}/> </div>
+     
+      <div className='success-msg' id='success-msg' style={style.success}>Login Successful<Close onClick={closeSuccessMsg}/> </div>
       {/* </div> */}
     </>
 
   );
 }
 
-export default SnackBar
+export default SnackBar;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme, alpha } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -33,10 +33,8 @@ import './Addnoticepage.css';
 import Close from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-// import {successContext} from '../Login/SuccessContext';
+import { SuccessContext } from '../Login/SuccessProvider';
 
-import SnackBar from '../Login/SnackBar';
-import { useContext } from 'react';
 const drawerWidth = 240;
 
 
@@ -168,12 +166,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Homepage({success}) {
+export default function Homepage() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState('EUR');
-   
+
+  const [val, setSuccess]=useContext(SuccessContext);
+
   const handleChange = (event) => {
     setCategory(event.target.value);
   };
@@ -195,7 +195,9 @@ export default function Homepage({success}) {
     document.getElementById("addNoticeBox").style.display = "none";
   };
   
-  
+  const logoutSuccess=()=>{
+    setSuccess('');
+  }
   
   return (
     <>
@@ -228,15 +230,24 @@ export default function Homepage({success}) {
               {/* <NotificationsActiveIcon className='notification_icon' /> */}
             </div>
             <div className="right_nav">
-              <Fab color="primary" aria-label="add" onClick={show}>
+              {
+                val&&<Fab color="primary" aria-label="add" onClick={show}>
                 <AddIcon />
               </Fab>
-
-              <a href="/login" className="login_a">
-                <Button variant="contained" color="primary" disableElevation>
+              }
+              {
+                (val&&<Button variant="contained" color="primary" disableElevation id='login-buttn' onClick={logoutSuccess}>
+                  Logout
+                </Button>
+              )
+              }
+              {
+                (!val&&<a href="/login" className="login_a" id='login_a' onClick={logoutSuccess}>
+                <Button variant="contained" color="primary" disableElevation id='login-buttn'>
                   Login
                 </Button>
-              </a>
+              </a>)
+              }
             </div>
           </Toolbar>
         </AppBar>
