@@ -4,10 +4,10 @@ import {React, createContext, useState} from 'react';
 const SuccessContext = createContext();
 
 const SuccessProvider=(props)=>{
-    const [val, setValue]=useState('');
+    const [isLogin, setIsLogin]=useState('');
     return (
         <>
-        <SuccessContext.Provider value={[val,setValue]}>{props.children}</SuccessContext.Provider>
+        <SuccessContext.Provider value={[isLogin,setIsLogin]}>{props.children}</SuccessContext.Provider>
         </>
     )
 }

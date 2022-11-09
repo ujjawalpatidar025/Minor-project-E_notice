@@ -1,4 +1,7 @@
 import React, { useContext, useState } from 'react';
+import { SuccessContext } from '../Login/SuccessProvider';
+import './NavAndSidebar.css';
+import './Addnoticepage.css';
 import clsx from 'clsx';
 import { makeStyles, useTheme, alpha } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -27,13 +30,10 @@ import WidgetsIcon from '@material-ui/icons/Widgets';
 import GroupIcon from '@material-ui/icons/Group';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import './Homepage.css';
 import { InputLabel, Link } from '@material-ui/core';
-import './Addnoticepage.css';
 import Close from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { SuccessContext } from '../Login/SuccessProvider';
 
 const drawerWidth = 240;
 
@@ -166,13 +166,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Homepage() {
+export default function NavAndSidebar() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState('EUR');
 
-  const [val, setSuccess]=useContext(SuccessContext);
+  const [isLogin, setIsLogin]=useContext(SuccessContext);
 
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -196,7 +196,7 @@ export default function Homepage() {
   };
   
   const logoutSuccess=()=>{
-    setSuccess('');
+    setIsLogin('');
   }
   
   return (
@@ -231,18 +231,18 @@ export default function Homepage() {
             </div>
             <div className="right_nav">
               {
-                val&&<Fab color="primary" aria-label="add" onClick={show}>
+                isLogin&&<Fab color="primary" aria-label="add" onClick={show}>
                 <AddIcon />
               </Fab>
               }
               {
-                (val&&<Button variant="contained" color="primary" disableElevation id='login-buttn' onClick={logoutSuccess}>
+                (isLogin&&<Button variant="contained" color="primary" disableElevation id='logout-buttn' onClick={logoutSuccess}>
                   Logout
                 </Button>
               )
               }
               {
-                (!val&&<a href="/login" className="login_a" id='login_a' onClick={logoutSuccess}>
+                (!isLogin&&<a href="/login" className="login_a" id='login_a' onClick={logoutSuccess}>
                 <Button variant="contained" color="primary" disableElevation id='login-buttn'>
                   Login
                 </Button>
@@ -323,10 +323,12 @@ export default function Homepage() {
               <ListItemText primary="Spam" />
             </ListItem>
             <ListItem button key="Login">
+            <a href='/login'>
               <ListItemIcon>
                 <VpnKeyIcon />{" "}
               </ListItemIcon>
-              <ListItemText primary="Login" />
+              </a>
+              <ListItemText primary="Login"/>
             </ListItem>
           </List>
         </Drawer>

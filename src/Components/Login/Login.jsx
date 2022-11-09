@@ -1,6 +1,6 @@
 import React, {useContext, useState } from 'react'
-import loginBackground from '../Images/loginBackground.jpeg';
 import './Login.css';
+import loginBackground from '../Images/loginBackground.jpeg';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -39,10 +39,10 @@ const useStyles = makeStyles((theme) => ({
 
 
 const Login = () => {
- 
-  
     const classes = useStyles();
-    const [val, setSuccess]=useContext(SuccessContext)
+
+    const [isLogin, setIsLogin]=useContext(SuccessContext);
+
     const [values, setValues] = React.useState({
       email: '',
       password: '',
@@ -50,28 +50,21 @@ const Login = () => {
     });
     const [emailError, setEmailError]=useState('');
     const [passwordError, setPasswordError]=useState('');
-    const [successMsg, setSuccessMsg]=useState('');
   
     
     const handleEmailChange = (event) => {
       setEmailError('');
-      setSuccessMsg('');
-      // setloginSuccess(false);
-      setSuccess('');
+      setIsLogin('');
       setValues({ ...values, email: event.target.value });
     };
     const handlePasswordChange = (prop)=> (event) => {
       setPasswordError('');
-      setSuccessMsg('');
-      // setloginSuccess(false);
-      setSuccess('')
+      setIsLogin('');
       setValues({ ...values, [prop]: event.target.value });
     };
     const handleClickShowPassword = () => {
-      setEmailError('');
-      setSuccessMsg('');
-      // setloginSuccess(false);
-      setSuccess('');
+      setPasswordError('');
+      setIsLogin('');
       setValues({ ...values, showPassword: !values.showPassword });
     };
   
@@ -91,9 +84,7 @@ const Login = () => {
             setEmailError('');
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
-              setSuccessMsg('Login Successfull');
-              // setloginSuccess(true);
-              setSuccess('Login Successfull');
+              setIsLogin('Login Successful');
               // window.location.href='/Academic';
             }else{
               setPasswordError('Incorrect password');
@@ -126,11 +117,11 @@ const Login = () => {
   return (
     <>
     {/* {console.log()} */}
-    {val&&<SnackBar/>}
+    {isLogin&&<SnackBar/>}
     <div className="login">
       <div className="login_box">
-        {val&&<h1 style={{color:'rgb(79 29 126 / 86%)', textAlign:'center'}}>You Are Already Logged In</h1>}
-        {!val&&(<div className="login_form">
+        {isLogin&&<h1 style={{color:'rgb(79 29 126 / 86%)', textAlign:'center'}}>You Are Already Logged In</h1>}
+        {!isLogin&&(<div className="login_form">
           <div className="heading-login">
             <AccountCircleIcon />
             <h1>Admin Login</h1>
@@ -172,7 +163,7 @@ const Login = () => {
             </Button>
           </form>
         </div>)}
-        <img src={loginBackground}></img>
+        <img src={loginBackground} alt='login-background'></img>
       </div>
       
     </div>

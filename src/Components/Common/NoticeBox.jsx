@@ -5,11 +5,11 @@ import SnackBar from '../Login/SnackBar.jsx';
 import { SuccessContext } from '../Login/SuccessProvider.jsx';
 
 // c;
-const NoticeBox = ({loginSuccess}) => {
-  const [val, setSuccess]=useContext(SuccessContext);
+const NoticeBox = () => {
+  const [isLogin, setIsLogin]=useContext(SuccessContext);
   return (
     <>
-    {val&&<SnackBar/>}
+    {isLogin&&<SnackBar/>}
     {/* <div className='notice_box'> */}
 
       {/* <div className="notice_box_updation">
