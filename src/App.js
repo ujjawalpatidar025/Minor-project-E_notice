@@ -5,6 +5,7 @@ import Landing from './Components/Landingpage/Landing.jsx';
 import NoticeBox from './Components/Common/NoticeBox';
 import Login from './Components/Login/Login.jsx';
 import NavAndSidebar from './Components/NavAndSidebar/NavAndSidebar';
+import Addnoticepage from './Components/NavAndSidebar/Addnoticepage.jsx';
 
 
 
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <SuccessProvider>
         {location.pathname === "/" ? null : <NavAndSidebar />}
+        <Addnoticepage/>
         <Routes>
           <Route exact="true" path="/" element={<Landing />}></Route>
           <Route exact="true" path="/login" element={<Login />}></Route>

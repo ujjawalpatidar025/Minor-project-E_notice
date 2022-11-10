@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { SuccessContext } from '../Login/SuccessProvider';
 import './NavAndSidebar.css';
-import './Addnoticepage.css';
+
 import clsx from 'clsx';
 import { makeStyles, useTheme, alpha } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -35,7 +35,7 @@ import { InputLabel, Link } from '@material-ui/core';
 import Close from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-
+import Addnoticepage from './Addnoticepage.jsx';
 const drawerWidth = 240;
 
 
@@ -137,7 +137,7 @@ export default function NavAndSidebar() {
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState('EUR');
 
-  const [isLogin, setIsLogin]=useContext(SuccessContext);
+  const [isLogin, setIsLogin,openAdd, setOpenAdd]=useContext(SuccessContext);
 
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -154,7 +154,7 @@ export default function NavAndSidebar() {
   
 
   const show = () => {
-    document.getElementById('addNoticeBox').style.display = 'flex';
+    setOpenAdd(true);
   }
   
   const logoutSuccess=()=>{
@@ -193,9 +193,10 @@ export default function NavAndSidebar() {
             </div>
             <div className="right_nav">
               {
-                isLogin&&<Fab color="primary" aria-label="add" onClick={show}>
-                <AddIcon />
+                isLogin&&<Fab color="primary" aria-label="add" id='add-icon' onClick={show} style={{cursor:'pointer'}}>
+                <AddIcon/>
               </Fab>
+                
               }
               {
                 (isLogin&&<Button variant="contained" color="primary" disableElevation id='logout-buttn' onClick={logoutSuccess}>
@@ -297,7 +298,7 @@ export default function NavAndSidebar() {
           </List>
         </Drawer>
       </div>
-
+      
      
     </>
   );

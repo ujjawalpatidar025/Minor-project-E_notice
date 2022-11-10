@@ -1,10 +1,15 @@
-
-import React from 'react'
+import React from 'react';
+import Button from '@material-ui/core/Button';
 import { InputLabel, Link } from '@material-ui/core';
 import Close from '@material-ui/icons/Close';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import { makeStyles } from '@mui/material';
+// import { makeStyles } from '@mui/material';
+import {makeStyles } from '@material-ui/core/styles';
+
+import'./Addnoticepage.css';
+import { useContext } from 'react';
+import { SuccessContext } from '../Login/SuccessProvider';
 
 const categories = [
     {
@@ -39,21 +44,23 @@ const categories = [
     },
   ];
 
-function Addnoticepage() {
-    const classes=makeStyles((theme)=>({
-        rootForm: {
-            '& .MuiTextField-root': {
-              margin: theme.spacing(1),
-              width: '25ch',
-            },
-          },
-    }))
+const useStyles=makeStyles((theme)=>({
+    rootForm: {
+        '& .MuiTextField-root': {
+          margin: theme.spacing(1),
+          width: '25ch',
+        },
+      },
+}));
+const Addnoticepage=()=> {
+    const classes=useStyles();
+    const [isLogin,setIsLogin,openAdd, setOpenAdd]=useContext(SuccessContext);
     const off = () => {
-        document.getElementById("addNoticeBoxes").style.display = "none";
-      };
+         setOpenAdd(false);
+    };
   return (
     <>
-    <div className="add-Notice-box" id="addNoticeBoxes">
+    {openAdd&&<div className="add-Notice-box" id="addNoticeBoxes">
         <div className="notice-box">
           <div className="addnotice-heading">
             <h1>Add Notice</h1>
@@ -98,9 +105,10 @@ function Addnoticepage() {
             </form>
           </div>
         </div>
-        </div>
-    </>
+        </div>}
+        </>
+    
   )
 }
 
-export default Addnoticepage
+export default Addnoticepage;
