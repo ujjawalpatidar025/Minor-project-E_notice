@@ -24,6 +24,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
 import Button from '@material-ui/core/Button';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import WidgetsIcon from '@material-ui/icons/Widgets';
@@ -38,46 +39,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 const drawerWidth = 240;
 
 
-const categories = [
-  {
-    value: 'All',
-    label: 'All',
-  },
-  {
-    value: 'Academic',
-    label: 'Academic',
-  },
-  {
-    value: 'Social',
-    label: 'Social',
-  },
-  {
-    value: 'Culture',
-    label: 'Culture',
-  },
-];
-const institutes = [
-  {
-    value: 'IIST',
-    label: 'IIST',
-  },
-  {
-    value: 'IIP',
-    label: 'IIP',
-  },
-  {
-    value: 'IIM',
-    label: 'IIM',
-  },
-];
+
 
 const useStyles = makeStyles((theme) => ({
-  rootForm: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
+  
   root: {
     position: 'fixed',
     display: 'flex',
@@ -191,9 +156,6 @@ export default function NavAndSidebar() {
   const show = () => {
     document.getElementById('addNoticeBox').style.display = 'flex';
   }
-  const off = () => {
-    document.getElementById("addNoticeBox").style.display = "none";
-  };
   
   const logoutSuccess=()=>{
     setIsLogin('');
@@ -283,9 +245,11 @@ export default function NavAndSidebar() {
           ))} */}
 
             <ListItem button key="All">
+            <a href='/login'>
               <ListItemIcon>
-                <AllInclusiveIcon />{" "}
+                <HomeIcon />{" "}
               </ListItemIcon>
+              </a>
               <ListItemText primary="All" />
             </ListItem>
             <ListItem button key="Academic">
@@ -334,54 +298,7 @@ export default function NavAndSidebar() {
         </Drawer>
       </div>
 
-      {/* ////////////////// Add Notice Box ////////////////// */}
-
-      <div className="add-Notice-box" id="addNoticeBox">
-        <div className="notice-box">
-          <div className="addnotice-heading">
-            <h1>Add Notice</h1>
-            <Close onClick={off} style={{cursor:'pointer'}} />
-          </div>
-          <div className="notice-form-section">
-            <form noValidate className={classes.rootForm} autoComplete="off">
-              <div className='notice-form-input'>
-              <TextField id="institute" select label="Select Institute">
-              {institutes.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <TextField id="branch" label="Enter Branch" required />
-              <TextField id="organization" label="Enter Organization" />
-              <TextField id="cateogory" select label="Select Category">
-                {categories.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </TextField>
-              <TextField id="title" label="Title" />
-              <TextField id="subtitle" label="Sub Title" />
-              </div>
-              <div className='textarea-my'>
-              <TextField id="outlined-multiline-static"  label="Write Message" multiline rows={5}/>
-              </div>
-              <div className='upload-input'>
-                <InputLabel>Upload Image/Video</InputLabel>
-                <input id="choose image/video"  type='file'/>
-              </div>
-              <div className='add-notice'>
-              <Button type='submit' variant="contained" color="primary" className="submitbtn">
-                 Add Notice
-               </Button>
-              </div>
-            
-            
-            </form>
-          </div>
-        </div>
-      </div>
+     
     </>
   );
 }
