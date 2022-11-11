@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Accordian from './Accordian.jsx';
 import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import FilterListIcon from '@material-ui/icons/FilterList';
@@ -6,15 +6,19 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import './NoticeBox.css';
+import SnackBar from '../Login/SnackBar.jsx';
+import { SuccessContext } from '../Login/SuccessProvider.jsx';
 
+// c;
 const NoticeBox = () => {
 
-  const [checked, setChecked] = React.useState(true);
+  const [isLogin, setIsLogin]=useContext(SuccessContext);
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
   return (
+    <>
+    {isLogin&&<SnackBar/>}
+    
+
 
     <div className='notice_box'>
 
@@ -31,29 +35,13 @@ const NoticeBox = () => {
         <FilterListIcon className='right_icon'/>
         <DeleteIcon className='right_icon'/>
         </div>
+        </div>
+        </div>
         
 
-      </div>
-      <div className="accordian_box">
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      </div>
-      
-    </div>
-    
+    </>
 
   )
 }
 
-export default NoticeBox
+export default NoticeBox;
