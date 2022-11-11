@@ -44,6 +44,13 @@ const Login = () => {
     const handleMouseDownPassword = (event) => {
       event.preventDefault();
     };
+
+const valid=()=>{
+  var email=document.getElementsByName('email');
+ 
+   alert(email.value);
+}
+    
   
   return (
     <div className="login">
@@ -51,12 +58,14 @@ const Login = () => {
         <div className="login_form">
           <div className='heading-login'><AccountCircleIcon />
           <h1>Admin Login</h1></div>
-          <form className={classes.root} noValidate autoComplete="off">
-            <TextField id="standard-basic" label="Email" />
-            <TextField id="standard-basic" label="Password" />
-            <Button variant="contained" color="primary" className='submitbtn'>
+          <form className={classes.root} noValidate autoComplete="off" name='Form'  >
+            <TextField id="standard-basic" label="Email" name='email' />
+           
+            <TextField id="standard-basic" label="Password" name='password'  />
+            <Button variant="contained" color="primary" className='submitbtn' onClick={valid} >
               LOGIN
             </Button>
+          
           </form>
         </div>
         <img src={loginBackground}></img>

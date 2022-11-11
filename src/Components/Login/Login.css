@@ -55,6 +55,11 @@
     height:100%;
 }
 
+.email_err{
+    color:red;
+    display: none;
+}
+
 
 
 

@@ -18,14 +18,27 @@ function App() {
   return (
     
     <div className="App">
-      <Homepage/>
-      <Routes>
+       
+       <Homepage/>
+        <Routes>
+       
         <Route exact='true' path='/' element={< Landing />}></Route>
-        <Route exact='true' path='/login' element={< Login />}></Route>
 
-        <Route exact='true' path='/Academic' element={<NoticeBox/>}></Route>
-        
+        <Route exact='true' path='/login' element={< Login />}></Route>
+       
+        {/* <Route exact='true' path='/Academic/:cllg' element={<NoticeBox/>}>
+      
+        </Route>
+         */}
       </Routes>
+      <Notice/>
+      <NoticeBox/>
+      
+     
+     
+     
+    
+      
      
     </div>
   );

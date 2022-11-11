@@ -29,7 +29,7 @@ export default function Notice() {
         textColor="primary"
         centered
       >
-        <Tab label="IIST" className='sector'/>
+       <Tab label="IIST" className='sector'/>
         <Tab label="IIP"className='sector' />
         <Tab label="IIMR" className='sector'  />
       </Tabs>
