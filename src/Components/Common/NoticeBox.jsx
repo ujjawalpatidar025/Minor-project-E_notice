@@ -12,12 +12,19 @@ import { SuccessContext } from '../Login/SuccessProvider.jsx';
 // c;
 const NoticeBox = () => {
 
+
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
+
   const [isLogin, setIsLogin]=useContext(SuccessContext);
 
   return (
     <>
     {isLogin&&<SnackBar/>}
-    
+    {/* <div className='notice_box'> */}
 
 
     <div className='notice_box'>
@@ -39,6 +46,27 @@ const NoticeBox = () => {
         </div>
         
 
+      {/* <div className="notice_box_updation">
+>>>>>>> baf02890c54e33c3e49cb782edfcf8e8a59226ab
+
+      </div>
+      <div className="accordian_box">
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      </div>
+      
+    </div> */}
     </>
 
   )
