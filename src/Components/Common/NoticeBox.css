@@ -1,16 +1,23 @@
 .notice_box{
     position: relative;
-    width:82rem !important;
-    min-height:500px;
+    width:100% ;
+    min-height:100vh;
     background-color: white;
+    overflow: hidden;
+    /* padding-top: 300px;
+    padding-left: 300px; */
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    top:25%;
-    overflow: auto;
-    left:10%;
+    /* border-top-left-radius: 16px;
+    border-top-right-radius: 16px; */
+    /* top:25%; */
+    /* overflow: auto; */
+    /* left:10%; */
 }
-
+.accordian_box{
+    width: 80%;
+    height: 80%;
+    overflow: scroll;
+}
 .notice_box_updation{
     width:82rem;
     height:3rem;

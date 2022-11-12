@@ -1,6 +1,5 @@
-import React, {useContext, useEffect}from 'react';
+import React from 'react';
 import { Close } from '@material-ui/icons';
-import { SuccessContext } from './SuccessProvider';
 
 const style={
   success:{
@@ -25,20 +24,13 @@ const closeSuccessMsg=()=>{
 
 
 function SnackBar() {
-  const [isLogin,setIsLogin, openAdd, setOpenAdd, openSnackBar, setOpenSnackBar,count, setCount]=useContext(SuccessContext);
-
   return (
     <>
       {
-      useEffect(() => {
-        
-        setTimeout(() => {
-          const box = document.getElementById("success-msg");
-          box.style.display = "none"; 
-          setCount(1);
-        }, 5000)
-      }, [])
-      
+      setTimeout(() => {
+        const box = document.getElementById("success-msg");
+        box.style.display = "none"; 
+      }, 5000)
       }
 
      
