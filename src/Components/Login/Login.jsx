@@ -16,9 +16,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import SnackBar from './SnackBar';
 import { SuccessContext } from './SuccessProvider';
-import { NavLink } from 'react-router-dom';
 
 
 
@@ -44,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
     const classes = useStyles();
     let history = useNavigate();
-    const [isLogin, setIsLogin]=useContext(SuccessContext);
+    const [isLogin,setIsLogin, openAdd, setOpenAdd, openSnackBar, setOpenSnackBar, count, setCount]=useContext(SuccessContext);
 
     const [values, setValues] = React.useState({
       email: '',
@@ -89,7 +87,9 @@ const Login = () => {
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
               setIsLogin('Login Successful');
+              setOpenSnackBar(true);
               history('/home');
+              
             }else{
               setPasswordError('Incorrect password');
             }
