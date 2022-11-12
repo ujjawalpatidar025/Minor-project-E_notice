@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { SuccessContext } from '../Login/SuccessProvider';
 import './NavAndSidebar.css';
-
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme, alpha } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -246,11 +246,11 @@ export default function NavAndSidebar() {
           ))} */}
 
             <ListItem button key="All">
-            <a href='/login'>
+            <NavLink to='/home'>
               <ListItemIcon>
                 <HomeIcon />{" "}
               </ListItemIcon>
-              </a>
+              </NavLink>
               <ListItemText primary="All" />
             </ListItem>
             <ListItem button key="Academic">
@@ -288,11 +288,11 @@ export default function NavAndSidebar() {
               <ListItemText primary="Spam" />
             </ListItem>
             <ListItem button key="Login">
-            <a href='/login'>
+            <NavLink to='/login'>
               <ListItemIcon>
                 <VpnKeyIcon />{" "}
               </ListItemIcon>
-              </a>
+              </NavLink>
               <ListItemText primary="Login"/>
             </ListItem>
           </List>
