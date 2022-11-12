@@ -192,25 +192,47 @@ export default function NavAndSidebar() {
               {/* <NotificationsActiveIcon className='notification_icon' /> */}
             </div>
             <div className="right_nav">
-              {
-                isLogin&&<Fab color="primary" aria-label="add" id='add-icon' onClick={show} style={{cursor:'pointer'}}>
-                <AddIcon/>
-              </Fab>
-                
-              }
-              {
-                (isLogin&&<Button variant="contained" color="primary" disableElevation id='logout-buttn' onClick={logoutSuccess}>
+              {isLogin && (
+                <Fab
+                  color="primary"
+                  aria-label="add"
+                  id="add-icon"
+                  type="button"
+                  onClick={show}
+                  style={{ cursor: "pointer" }}
+                >
+                  <AddIcon />
+                </Fab>
+              )}
+              {isLogin && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="button"
+                  disableElevation
+                  id="logout-buttn"
+                  onClick={logoutSuccess}
+                >
                   Logout
                 </Button>
-              )
-              }
-              {
-                (!isLogin&&<a href="/login" className="login_a" id='login_a' onClick={logoutSuccess}>
-                <Button variant="contained" color="primary" disableElevation id='login-buttn'>
-                  Login
-                </Button>
-              </a>)
-              }
+              )}
+              {!isLogin && (
+                <NavLink
+                  to="/login"
+                  onClick={logoutSuccess}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
+                    variant="contained"
+                    type="button"
+                    color="primary"
+                    disableElevation
+                    id="login-buttn"
+                  >
+                    Login
+                  </Button>
+                </NavLink>
+              )}
             </div>
           </Toolbar>
         </AppBar>
@@ -244,15 +266,17 @@ export default function NavAndSidebar() {
               <ListItemText primary={text} />
             </ListItem>
           ))} */}
-
-            <ListItem button key="All">
-            <NavLink to='/home'>
-              <ListItemIcon>
-                <HomeIcon />{" "}
-              </ListItemIcon>
-              </NavLink>
-              <ListItemText primary="All" />
-            </ListItem>
+            <NavLink
+              to="/home"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
+              <ListItem button key="All">
+                <ListItemIcon>
+                  <HomeIcon />{" "}
+                </ListItemIcon>
+                <ListItemText primary="All" />
+              </ListItem>
+            </NavLink>
             <ListItem button key="Academic">
               <ListItemIcon>
                 <MenuBookIcon />{" "}
@@ -287,19 +311,20 @@ export default function NavAndSidebar() {
               </ListItemIcon>
               <ListItemText primary="Spam" />
             </ListItem>
-            <ListItem button key="Login">
-            <NavLink to='/login'>
-              <ListItemIcon>
-                <VpnKeyIcon />{" "}
-              </ListItemIcon>
-              </NavLink>
-              <ListItemText primary="Login"/>
-            </ListItem>
+            <NavLink
+              to="/login"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
+              <ListItem button key="Login">
+                <ListItemIcon>
+                  <VpnKeyIcon />{" "}
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItem>
+            </NavLink>
           </List>
         </Drawer>
       </div>
-      
-     
     </>
   );
 }
