@@ -6,7 +6,7 @@ import { SuccessContext } from '../Login/SuccessProvider.jsx';
 
 // c;
 const NoticeBox = () => {
-  const [isLogin, setIsLogin]=useContext(SuccessContext);
+  const [isLogin,setIsLogin, openAdd, setOpenAdd]=useContext(SuccessContext);
   return (
     <>
     {isLogin&&<SnackBar/>}

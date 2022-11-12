@@ -5,6 +5,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import logo2 from '../Images/logo2.png';
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -26,7 +27,7 @@ const Landing = () => {
           </div>
         </Collapse>
         <button className="arrow-btn">
-        <a href="/home"><ExpandMore style={{fontSize:'2.5rem'}}/></a>
+        <NavLink to="/home"><ExpandMore style={{fontSize:'2.5rem'}}/></NavLink>
         </button>
       </div>
     </div>
