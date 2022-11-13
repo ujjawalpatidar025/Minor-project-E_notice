@@ -12,14 +12,17 @@ import { SuccessContext } from '../Login/SuccessProvider.jsx';
 // c;
 const NoticeBox = () => {
 
-
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
 
-  const [isLogin, setIsLogin]=useContext(SuccessContext);
+
+
+
+  const [isLogin,setIsLogin, openAdd, setOpenAdd]=useContext(SuccessContext);
+
 
   return (
     <>

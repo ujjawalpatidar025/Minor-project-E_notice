@@ -1,11 +1,13 @@
 import React, {useContext, useState } from 'react'
 import './Login.css';
+// import { useHistory } from "react-router-dom";
+
 import loginBackground from '../Images/loginBackground.jpeg';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import Button from '@material-ui/core/Button';
-
+import { useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
@@ -16,6 +18,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import SnackBar from './SnackBar';
 import { SuccessContext } from './SuccessProvider';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -40,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
     const classes = useStyles();
-
+    let history = useNavigate();
     const [isLogin, setIsLogin]=useContext(SuccessContext);
 
     const [values, setValues] = React.useState({
@@ -50,6 +53,7 @@ const Login = () => {
     });
     const [emailError, setEmailError]=useState('');
     const [passwordError, setPasswordError]=useState('');
+    const [linkValue, setLinkValue]=useState(null);
   
     
     const handleEmailChange = (event) => {
@@ -75,7 +79,7 @@ const Login = () => {
 
     
 
-    const handleFormSubmit=(e)=>{
+     const  handleFormSubmit=(e)=>{
       e.preventDefault();
       if(values.email!==''){
         const emailRegex=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -86,7 +90,7 @@ const Login = () => {
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
               setIsLogin('Login Successful');
-              // window.location.href='/Academic';
+              history('/home');
             }else{
               setPasswordError('Incorrect password');
             }
@@ -119,7 +123,6 @@ const Login = () => {
   return (
     <>
     {/* {console.log()} */}
-    {isLogin&&<SnackBar/>}
     <div className="login">
       <div className="login_box">
 
@@ -161,12 +164,11 @@ const Login = () => {
               variant="contained"
               color="primary"
               className="submitbtn"
-            >
-            LOGIN
 
+            >Login
             </Button>
-          
-          </form>
+            
+        </form>
         </div>)}
         <img src={loginBackground} alt='login-background'></img>
       </div>
