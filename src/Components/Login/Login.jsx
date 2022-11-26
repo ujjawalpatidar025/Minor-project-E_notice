@@ -86,7 +86,7 @@ const Login = () => {
             if(values.password==='demo'){
               setValues({ ...values, email:'', password:'' });
               setIsLogin('Login Successful');
-              history('/home');
+              history('/home/iist');
               
             }else{
               setPasswordError('Incorrect password');

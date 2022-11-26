@@ -31,6 +31,30 @@ function App() {
             <Route exact="true" path="/home/iimr" element={<IIMR/>}/>
            
           </Route>
+          <Route exact="true" path="/academic">
+            <Route exact="true" path="/academic/iist" element={<IIST/>}/>
+            <Route exact="true" path="/academic/iip" element={<IIP/>}/>
+            <Route exact="true" path="/academic/iimr" element={<IIMR/>}/>
+           
+          </Route>
+          <Route exact="true" path="/social">
+            <Route exact="true" path="/social/iist" element={<IIST/>}/>
+            <Route exact="true" path="/social/iip" element={<IIP/>}/>
+            <Route exact="true" path="/social/iimr" element={<IIMR/>}/>
+           
+          </Route>
+          <Route exact="true" path="/community">
+            <Route exact="true" path="/community/iist" element={<IIST/>}/>
+            <Route exact="true" path="/community/iip" element={<IIP/>}/>
+            <Route exact="true" path="/community/iimr" element={<IIMR/>}/>
+           
+          </Route>
+          <Route exact="true" path="/spam">
+            <Route exact="true" path="/spam/iist" element={<IIST/>}/>
+            <Route exact="true" path="/spam/iip" element={<IIP/>}/>
+            <Route exact="true" path="/spam/iimr" element={<IIMR/>}/>
+           
+          </Route>
       </Routes>
       {isLogin!=='Login Successful'?null:<SnackBar/>}
 

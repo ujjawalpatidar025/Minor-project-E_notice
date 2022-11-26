@@ -107,10 +107,10 @@ const Addnoticepage=()=> {
                     rows={5}
                   />
                 </div>
-                <div className="upload-input">
+                {/* <div className="upload-input">
                   <InputLabel>Upload Image/Video</InputLabel>
                   <input id="choose image/video" type="file" />
-                </div>
+                </div> */}
                 <div className="add-notice">
                   <Button
                     type="submit"
