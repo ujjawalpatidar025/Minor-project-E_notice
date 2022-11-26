@@ -211,22 +211,29 @@ export default function Homepage() {
             </ListItem>
           ))} */}
 
-          <ListItem button key='All' >
+          <Link to="/home/iist"><ListItem button key='All' >
             <ListItemIcon><AllInclusiveIcon/> </ListItemIcon>
             <ListItemText primary='All' />
           </ListItem>
+          </Link>
+          <Link to="/academic/iist">
           <ListItem button key='Academic'>
             <ListItemIcon><MenuBookIcon /> </ListItemIcon>
             <ListItemText primary='Academic' />
           </ListItem>
+          </Link>
+          <Link to="/social/iist">
           <ListItem button key='Social'>
             <ListItemIcon><WidgetsIcon /> </ListItemIcon>
             <ListItemText primary='Social' />
           </ListItem>
+          </Link>
+          <Link to="/community/iist">
           <ListItem button key='Community'>
             <ListItemIcon><GroupIcon /> </ListItemIcon>
             <ListItemText primary='Community' />
           </ListItem>
+          </Link>
         </List>
         <Divider />
         <List>
@@ -237,14 +244,18 @@ export default function Homepage() {
             </ListItem>
             
           ))} */}
+          <Link to="/spam/iist">
           <ListItem button key='Spam'>
             <ListItemIcon><ErrorIcon /> </ListItemIcon>
             <ListItemText primary='Spam' />
           </ListItem>
+          </Link>
+         
           <ListItem button key='Login'>
             <ListItemIcon><VpnKeyIcon /> </ListItemIcon>
             <ListItemText primary='Login' />
           </ListItem>
+        
         </List>
       </Drawer>
 

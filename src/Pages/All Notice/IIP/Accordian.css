@@ -1,0 +1,72 @@
+.makeStyles-root-18 {
+    width: 80rem !important;
+    margin: auto;
+    z-index: -1 !important;
+    
+    /* position: absolute; */
+    /* left: 10%; */
+    /* top: 33%; */
+}
+
+.MuiAccordion-root.Mui-expanded {
+    margin: 0px !important;
+}
+
+.MuiCheckbox-colorSecondary.Mui-checked {
+    color: #9a62cf !important   ;
+}
+
+
+
+.MuiAccordion-rounded:hover{
+    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%) !important;
+    background-color: #d7c5e95a;
+    z-index: 2 !important;
+}
+
+
+
+.MuiTypography-root .MuiFormControlLabel-label .MuiTypography-body1
+{
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+
+.notice_content{
+    width:100%;
+  display: flex;
+  align-items: center;
+  
+}
+
+.notice_content h2{
+   width:15%;
+   margin-left:20px;
+    white-space: nowrap;
+  overflow: hidden;
+  font-size:1.3rem;
+  font-family: Poppins;
+  text-overflow: ellipsis;
+  color: rgb(77, 74, 74);
+}
+
+.notice_content h4{
+    width:50rem;
+    white-space: nowrap;
+  overflow: hidden;
+  font-family: Poppins;
+  color: rgb(77, 74, 74);
+  text-overflow: ellipsis;
+}
+
+.notice_modification{
+    /* background-color: #9a62cf; */
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width:10rem;
+    
+}

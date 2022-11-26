@@ -6,8 +6,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import './NoticeBox.css';
-import SnackBar from '../Login/SnackBar.jsx';
-import { SuccessContext } from '../Login/SuccessProvider.jsx';
+import SnackBar from '../../Components/Login/SnackBar.jsx';
+import { SuccessContext } from '../../Components/Login/SuccessProvider.jsx'
+import Notice from './Notice.jsx';
 
 // c;
 const NoticeBox = () => {
@@ -28,7 +29,7 @@ const NoticeBox = () => {
     <>
     {isLogin&&<SnackBar/>}
     {/* <div className='notice_box'> */}
-
+    <Notice/>
 
     <div className='notice_box'>
 
@@ -46,6 +47,22 @@ const NoticeBox = () => {
         <DeleteIcon className='right_icon'/>
         </div>
         </div>
+        <div className="accordian_box">
+       <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+      <Accordian/>
+     
+      </div>
         </div>
         
 
@@ -53,21 +70,7 @@ const NoticeBox = () => {
 >>>>>>> baf02890c54e33c3e49cb782edfcf8e8a59226ab
 
       </div>
-      <div className="accordian_box">
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      <Accordian/>
-      </div>
+    
       
     </div> */}
     </>

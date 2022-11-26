@@ -267,7 +267,7 @@ export default function NavAndSidebar() {
             </ListItem>
           ))} */}
             <NavLink
-              to="/home"
+              to="/home/iist"
               style={{ textDecoration: "none", color: "#000000" }}
             >
               <ListItem button key="All">
@@ -277,24 +277,39 @@ export default function NavAndSidebar() {
                 <ListItemText primary="All" />
               </ListItem>
             </NavLink>
+            <NavLink
+              to="/academic/iist"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
             <ListItem button key="Academic">
               <ListItemIcon>
                 <MenuBookIcon />{" "}
               </ListItemIcon>
               <ListItemText primary="Academic" />
             </ListItem>
+            </NavLink>
+            <NavLink
+              to="/social/iist"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
             <ListItem button key="Social">
               <ListItemIcon>
                 <WidgetsIcon />{" "}
               </ListItemIcon>
               <ListItemText primary="Social" />
             </ListItem>
+            </NavLink>
+            <NavLink
+              to="/community/iist"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
             <ListItem button key="Community">
               <ListItemIcon>
                 <GroupIcon />{" "}
               </ListItemIcon>
               <ListItemText primary="Community" />
             </ListItem>
+            </NavLink>
           </List>
           <Divider />
           <List>
@@ -305,12 +320,17 @@ export default function NavAndSidebar() {
             </ListItem>
             
           ))} */}
+          <NavLink
+              to="/spam/iist"
+              style={{ textDecoration: "none", color: "#000000" }}
+            >
             <ListItem button key="Spam">
               <ListItemIcon>
                 <ErrorIcon />{" "}
               </ListItemIcon>
               <ListItemText primary="Spam" />
             </ListItem>
+            </NavLink>
             <NavLink
               to="/login"
               style={{ textDecoration: "none", color: "#000000" }}
