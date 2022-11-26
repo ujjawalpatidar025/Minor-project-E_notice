@@ -72,6 +72,7 @@ const Login = () => {
       event.preventDefault();
     };
 
+
     
 
      const  handleFormSubmit=(e)=>{
@@ -114,12 +115,14 @@ const Login = () => {
 
     
   
+
   
   return (
     <>
     {/* {console.log()} */}
     <div className="login">
       <div className="login_box">
+
         {isLogin&&<h1 style={{color:'rgb(79 29 126 / 86%)', textAlign:'center'}}>You Are Already Logged In</h1>}
         {!isLogin&&(<div className="login_form">
           <div className="heading-login">
@@ -158,10 +161,11 @@ const Login = () => {
               variant="contained"
               color="primary"
               className="submitbtn"
+
             >Login
             </Button>
             
-          </form>
+        </form>
         </div>)}
         <img src={loginBackground} alt='login-background'></img>
       </div>

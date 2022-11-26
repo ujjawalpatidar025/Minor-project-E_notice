@@ -6,6 +6,9 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './Accordian.css';
 
@@ -27,14 +30,22 @@ export default function Accordian() {
           aria-controls="additional-actions1-content"
           id="additional-actions1-header"
         >
-          <FormControlLabel
-            aria-label="Acknowledge"
-            onClick={(event) => event.stopPropagation()}
-            onFocus={(event) => event.stopPropagation()}
-            control={<Checkbox />}
-            label="I acknowledge that I should stop the click event propagation">
-              
-            </FormControlLabel>
+        <Checkbox/>
+        <div className="notice_content">
+        <h2>IIMR</h2>
+        <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</h4>
+        <div className="notice_modification">
+        
+        <h3>Nov 1</h3>
+        <DeleteIcon className='right_icon'/>
+        <EditIcon className='right_icon'/>
+
+        </div>
+
+        </div>
+        
+           
+           
         </AccordionSummary>
         <AccordionDetails>
           <Typography color="textSecondary">

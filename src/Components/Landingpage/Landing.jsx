@@ -2,7 +2,7 @@ import React from 'react'
 import '../Landingpage/Landing.css';
 import Collapse  from '@material-ui/core/Collapse';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import logo2 from '../Images/logo2.png';
+import logo2 from '../Images/IIST_logo-removebg-preview.png';
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
