@@ -23,12 +23,8 @@ const IIMR = () => {
 
 
 
-  const [isLogin,setIsLogin, openAdd, setOpenAdd]=useContext(SuccessContext);
-
-
   return (
     <>
-    {isLogin&&<SnackBar/>}
     {/* <div className='notice_box'> */}
     <Notice/>
 

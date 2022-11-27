@@ -6,12 +6,15 @@ import {
   BrowserRouter ,  
 }   
 from 'react-router-dom';  
+import { SuccessProvider } from './Components/Login/SuccessProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <SuccessProvider>
+        <App />
+      </SuccessProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

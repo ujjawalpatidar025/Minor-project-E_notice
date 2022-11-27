@@ -5,7 +5,7 @@ const Academic = () => {
   return (
     <div>
         <Routes>
-            <Route exact='true' to='/academic/IIST' element=''/>
+            <Route exact='true' to='/academic/iist' element=''/>
 
             
         </Routes>

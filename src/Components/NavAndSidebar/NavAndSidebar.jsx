@@ -137,7 +137,7 @@ export default function NavAndSidebar() {
   const [open, setOpen] = React.useState(false);
   const [category, setCategory] = React.useState('EUR');
 
-  const [isLogin, setIsLogin,openAdd, setOpenAdd]=useContext(SuccessContext);
+  const [isLogin,setIsLogin, openAdd, setOpenAdd]=useContext(SuccessContext);
 
   const handleChange = (event) => {
     setCategory(event.target.value);
