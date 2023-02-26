@@ -19,9 +19,9 @@ function App() {
   
   return (
     <div className="App">
-      {/* {
+      {
           layout&&<Layout/>
-      } */}
+      }
       <Routes>
         <Route path="/" >
           <Route index element={<Landing />} />
