@@ -15,12 +15,13 @@ import AdbIcon from '@mui/icons-material/Adb';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import { useState } from 'react';
 
-const pages = ['General', 'Academic', 'Social','Community','Spam',<LiveHelpIcon fontSize='medium'/>];
+const pages = ['IIST', 'IIP', 'IIMR',<LiveHelpIcon fontSize='medium'/>];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Nav={
     backgroundColor:'transparent',
-    color:'black'
+    color:'black',
+    boxShadow:'none'
 }
 
 function Navbar() {
