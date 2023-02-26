@@ -28,7 +28,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Landing() {
+export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -93,7 +93,10 @@ export default function Landing() {
                 id="password"
                 autoComplete="current-password"
               />
-             
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
               <Button
                 type="submit"
                 fullWidth
@@ -114,7 +117,7 @@ export default function Landing() {
                   </Link>
                 </Grid>
               </Grid>
-              {/* <Copyright sx={{ mt: 5 }} /> */}
+              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>

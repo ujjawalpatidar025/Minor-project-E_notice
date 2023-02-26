@@ -4,6 +4,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./Images/back.jpg');
+  background-size: cover;
+  
 }
 *{
   margin: 0;
