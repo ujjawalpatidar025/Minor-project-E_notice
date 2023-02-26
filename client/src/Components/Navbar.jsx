@@ -44,6 +44,9 @@ function Navbar() {
   };
 
 
+  
+
+
 
   return (
     <AppBar position="static" sx={Nav}>
@@ -54,7 +57,7 @@ function Navbar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            href="/home"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -128,7 +131,7 @@ function Navbar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2,mx:2, color: 'black', display: 'block' }}
+                sx={{ my: 2,mx:2, color: 'black', display: 'block' ,fontWeight:'bolder',fontSize:'1rem'}}
               >
                 {page}
               </Button>

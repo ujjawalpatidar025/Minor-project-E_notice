@@ -5,6 +5,7 @@ import Landing from "./Pages/Landing";
 import Layout from "./Pages/Layout";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import CrtMessage from "./Components/CrtMessage";
 
 
 
@@ -26,6 +27,7 @@ function App() {
           <Route index element={<Landing />} />
           <Route path="/home" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/create" element={<CrtMessage />} />
         </Route>
       </Routes>
     </div>
