@@ -16,6 +16,11 @@ import iistImg from '../Images/iistImg.jpg'
 import { Collapse } from '@mui/material';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useDispatch} from 'react-redux';
+import { isloading, isLoginError, isLoginSuccess } from '../Redux/Slices/userSlice';
+import axios from 'axios';
+import {useNavigate} from 'react-router-dom'
+
 
 function Copyright(props) {
   return (
@@ -34,17 +39,48 @@ const theme = createTheme();
 
 export default function Landing() {
   const[check, setChecked]=useState(false);
+  const [error, setError]=useState("");
+  const dispatch=useDispatch();
+  const navigate=useNavigate();
   
   useEffect(()=>{
      setChecked(true);
   }, [])
-  const handleSubmit = (event) => {
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    dispatch(isloading());
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const loginData = {
+      email: data.get("email"),
+      password: data.get("password"),
+    };
+    const email = loginData.email;
+    const password = loginData.password;
+    axios.defaults.withCredentials=true;
+    if (!email || !password) setError("Please Fill All the necesarry details");
+    else {
+      try {
+        const user = await axios.post("/signin/", {
+          email,
+          password,
+        },
+       );
+        if (!user) setError("Invalid Credentials.");
+        else {
+          dispatch(isLoginSuccess());
+          navigate("/home");
+          localStorage.setItem("user", user.data);
+          console.log(user.data);
+        }
+      } catch (err) {
+        dispatch(isLoginError());
+        localStorage.removeItem("user");
+        setError("Invalid Credentials.");
+        console.log(err);
+      }
+    }
   };
 
   return (
@@ -73,18 +109,24 @@ export default function Landing() {
               maxWidth: "100%",
               height: "100%",
               backgroundColor: "hsl(229deg 15% 10% / 79%)",
-              justifyContent:'center',
-              display:'flex',
-              alignItems:'center',
-              textAlign:'center',
+              justifyContent: "center",
+              display: "flex",
+              alignItems: "center",
+              textAlign: "center",
             }}
           >
-            <Collapse in= {check} {...(check ? {timeout:2000}: {})} className="collapse-div">
-          <Box className="content-text" sx={{color:'#eee'}}>
-            <h1>WELCOME!</h1>
-            <h2 style={{color:'#5dff7d'}}>Indore Institute Academic Information Portal</h2>
-          </Box>
-        </Collapse>
+            <Collapse
+              in={check}
+              {...(check ? { timeout: 2000 } : {})}
+              className="collapse-div"
+            >
+              <Box className="content-text" sx={{ color: "#eee" }}>
+                <h1>WELCOME!</h1>
+                <h2 style={{ color: "#5dff7d" }}>
+                  Indore Institute Academic Information Portal
+                </h2>
+              </Box>
+            </Collapse>
           </Box>
         </Grid>
 
@@ -120,24 +162,25 @@ export default function Landing() {
                 autoComplete="email"
                 autoFocus
                 sx={{
-                  '& label.Mui-focused': {
-                    color: 'rgb(33 109 48)',
+                  "& label.Mui-focused": {
+                    color: "rgb(33 109 48)",
                   },
-                  '& .MuiInput-underline:after': {
-                    borderBottomColor: 'rgb(33 109 48)',
+                  "& .MuiInput-underline:after": {
+                    borderBottomColor: "rgb(33 109 48)",
                   },
-                  
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'rgb(33 109 48)',
+
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "rgb(33 109 48)",
                     },
-                    '&:hover fieldset': {
-                      borderColor: 'rgb(33 109 48)',
+                    "&:hover fieldset": {
+                      borderColor: "rgb(33 109 48)",
                     },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'rgb(33 109 48)',
-                    },}
-                  }}
+                    "&.Mui-focused fieldset": {
+                      borderColor: "rgb(33 109 48)",
+                    },
+                  },
+                }}
               />
               <TextField
                 margin="normal"
@@ -149,59 +192,77 @@ export default function Landing() {
                 id="password"
                 autoComplete="current-password"
                 sx={{
-                  '& label.Mui-focused': {
-                    color: 'rgb(33 109 48)',
+                  "& label.Mui-focused": {
+                    color: "rgb(33 109 48)",
                   },
-                  '& .MuiInput-underline:after': {
-                    borderBottomColor: 'rgb(33 109 48)',
+                  "& .MuiInput-underline:after": {
+                    borderBottomColor: "rgb(33 109 48)",
                   },
-                  
-                  '& .MuiOutlinedInput-root': {
-                    '& fieldset': {
-                      borderColor: 'rgb(33 109 48)',
+
+                  "& .MuiOutlinedInput-root": {
+                    "& fieldset": {
+                      borderColor: "rgb(33 109 48)",
                     },
-                    '&:hover fieldset': {
-                      borderColor: 'rgb(33 109 48)',
+                    "&:hover fieldset": {
+                      borderColor: "rgb(33 109 48)",
                     },
-                    '&.Mui-focused fieldset': {
-                      borderColor: 'rgb(33 109 48)',
-                    },}
-                  }}
+                    "&.Mui-focused fieldset": {
+                      borderColor: "rgb(33 109 48)",
+                    },
+                  },
+                }}
               />
 
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 , backgroundColor:'rgb(33 109 48)',
-                '&:hover': {
-                  backgroundColor: 'rgb(33 109 48)',
-                  borderColor: '#0062cc',
-                  boxShadow: 'none',
-                },
-                '&:active': {
-                  boxShadow: 'none',
-                  backgroundColor: 'rgb(33 109 48)',
-                  borderColor: 'rgb(33 109 48)',
-                },
-                '&:focus': {
-                  boxShadow: '0 0 0 0.2rem rgb(33 109 48)',
-                },}}
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: "rgb(33 109 48)",
+                  "&:hover": {
+                    backgroundColor: "rgb(33 109 48)",
+                    borderColor: "#0062cc",
+                    boxShadow: "none",
+                  },
+                  "&:active": {
+                    boxShadow: "none",
+                    backgroundColor: "rgb(33 109 48)",
+                    borderColor: "rgb(33 109 48)",
+                  },
+                  "&:focus": {
+                    boxShadow: "0 0 0 0.2rem rgb(33 109 48)",
+                  },
+                }}
               >
                 Sign In
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2" color={'rgb(33 109 48)'}>
+                  <Link href="#" variant="body2" color={"rgb(33 109 48)"}>
                     Forgot password?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2" color={'rgb(33 109 48)'}>
+                  <Link href="#" variant="body2" color={"rgb(33 109 48)"}>
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
+              {error&&<Grid
+                item
+                sx={{
+                  marginTop: "20px",
+                  padding: "5px",
+                  display: "flex",
+                  boxShadow: "2px 2px 1px grey",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Box color={"red"}>{error}</Box>
+              </Grid>}
               {/* <Copyright sx={{ mt: 5 }} /> */}
             </Box>
           </Box>
