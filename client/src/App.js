@@ -6,6 +6,9 @@ import Layout from "./Pages/Layout";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import CrtMessage from "./Components/CrtMessage";
+import IIST from "./Pages/IIST";
+import IIP from "./Pages/IIP";
+import IIMR from "./Pages/IIMR";
 
 
 
@@ -28,6 +31,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/create" element={<CrtMessage />} />
+          <Route path="/iist" element={<IIST />} />
+          <Route path="/iip" element={<IIP />} />
+          <Route path="/iimr" element={<IIMR />} />
         </Route>
       </Routes>
     </div>

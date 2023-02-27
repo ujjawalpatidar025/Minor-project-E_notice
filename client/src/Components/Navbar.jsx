@@ -14,8 +14,9 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const pages = ['IIST', 'IIP', 'IIMR',<LiveHelpIcon fontSize='medium'/>];
+const pages = ['IIST', 'IIP', 'IIMR'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Nav={
@@ -128,13 +129,15 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Button
+              
+              <Link to={`/${page}`}><Button
                 key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2,mx:2, color: 'black', display: 'block' ,fontWeight:'bolder',fontSize:'1rem'}}
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 
