@@ -8,7 +8,7 @@ import { verifyToken } from "./verifyToken.js";
 
 const app=express();
 dotenv.config();
-app.use(cors({origin:["http:localhost:3000"],methods:["GET", "POST"],credentials: true}));
+app.use(cors({methods:["GET", "POST"],credentials: true}));
 app.use(express.urlencoded({ extended: false }));
 
 

@@ -14,11 +14,13 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import RateReviewIcon from '@mui/icons-material/RateReview';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const pages = ['IIST', 'IIP', 'IIMR'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [ 'Logout'];
 
 const Nav={
     backgroundColor:'transparent',
@@ -46,6 +48,8 @@ function Layout() {
     setAnchorElUser(null);
   };
 
+
+  const [isAdmin, setisAdmin] = useState(false);
 
   
 
@@ -140,21 +144,34 @@ function Layout() {
              </Button>
              </Link>
             ))}
+
+            {isAdmin&&
             <Box style={{width:'5rem',display:'flex',justifyContent:'center',alignItems:'center'}}>
             <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto'}}/>
             </Link>
             </Box>
+            }
             
 
             
+
           </Box>
+          <Tooltip title="Query Section">
+            <Link to='/query' style={{textDecoration:'none',color:'black'}}>
+          <ContactSupportOutlinedIcon fontSize='medium' sx={{display:'flex',justifyContent:'center', alignItems:'center',margin:' 0 30px',cursor:'pointer'}}/>
+          </Link>
+          
+          </Tooltip>
 
           <Box sx={{ flexGrow: 0 }}>
+          
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+             < AccountCircleTwoToneIcon sx={{fontSize:'2rem'}}/>
               </IconButton>
             </Tooltip>
+           
+            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"

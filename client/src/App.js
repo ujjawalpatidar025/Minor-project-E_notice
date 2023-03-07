@@ -5,14 +5,15 @@ import Landing from "./Pages/Landing";
 import Layout from "./Pages/Layout";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
+
 import CrtMessage from "./Components/CrtMessage";
 import IIST from "./Pages/IIST";
 import IIP from "./Pages/IIP";
 import IIMR from "./Pages/IIMR";
-=======
+
 import RequiredAuth from './Pages/RequiredAuth';
->>>>>>> working
+import Query from "./Pages/Query";
+
 
 
 
@@ -32,7 +33,7 @@ function App() {
   
   return (
     <div className="App">
-      {/* {layout && <Layout />} */}
+      {layout && <Layout />}
       <Routes>
         <Route path="/">
           <Route index element={<Landing />} />
@@ -42,6 +43,7 @@ function App() {
           <Route path="/iist" element={<IIST />} />
           <Route path="/iip" element={<IIP />} />
           <Route path="/iimr" element={<IIMR />} />
+          <Route path="/query" element={<Query/>} />
         </Route>
       </Routes>
     </div>
