@@ -5,14 +5,14 @@ import Landing from "./Pages/Landing";
 import Layout from "./Pages/Layout";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
+
 import CrtMessage from "./Components/CrtMessage";
 import IIST from "./Pages/IIST";
 import IIP from "./Pages/IIP";
 import IIMR from "./Pages/IIMR";
-=======
+
 import RequiredAuth from './Pages/RequiredAuth';
->>>>>>> working
+
 
 
 
@@ -23,16 +23,16 @@ function App() {
   
   useEffect(() => {
       if(location.pathname!=='/'){ 
-        setLayout(true);
         if(!localStorage.user){
           navigate("/");
         }
+        setLayout(true);
       }
   }, [location])
   
   return (
     <div className="App">
-      {/* {layout && <Layout />} */}
+      {layout && <Layout />}
       <Routes>
         <Route path="/">
           <Route index element={<Landing />} />
