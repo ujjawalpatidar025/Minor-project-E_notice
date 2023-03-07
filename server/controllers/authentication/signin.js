@@ -14,7 +14,6 @@ export const signin= async (req, res, next)=>{
        if(!user) next(createError(404, "Invalid Credentials!"));
        else{
          const isCorrectPassword = (password===user.password)? 1 : 0;
-         console.log(isCorrectPassword)
          if (!isCorrectPassword) next(createError(404, "Invalid Credentials!"));
          else{
            const {password, ...others}=user._doc;
@@ -25,8 +24,6 @@ export const signin= async (req, res, next)=>{
              })
              .status(200)
              .json(others);
-             
-          console.log(token);
          }
        }
 

@@ -26,8 +26,8 @@ function App() {
       if(location.pathname!=='/'){ 
         if(!localStorage.user){
           navigate("/");
-        }
-        setLayout(true);
+        }else{
+        setLayout(true);}
       }
   }, [location])
   

@@ -17,7 +17,8 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import axios from 'axios';
 
 const pages = ['IIST', 'IIP', 'IIMR'];
 const settings = [ 'Logout'];
@@ -48,7 +49,15 @@ function Layout() {
     setAnchorElUser(null);
   };
 
+  const handleLogoutUser = async ()=>{
+    try{
+       const logoutSuccess=await axios.get('/signout');
+       if(logoutSuccess){localStorage.clear(); window.location.pathname='/';}
 
+    }catch(err){
+      console.log(err);
+    }
+  }
   const [isAdmin, setisAdmin] = useState(false);
 
   
@@ -188,11 +197,14 @@ function Layout() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
-              ))}
+              ))} */}
+              <MenuItem  onClick={handleLogoutUser}>
+                  <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
