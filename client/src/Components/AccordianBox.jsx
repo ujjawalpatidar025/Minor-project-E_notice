@@ -3,7 +3,17 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import { Box, IconButton,Button } from '@mui/material';
 
 
 const Accord = {
@@ -20,12 +30,28 @@ const AccordSum = {
 export default function AccordianBox(props) {
     const [expanded, setExpanded] = React.useState(false);
 
+
+
     const handleChange = (panel) => (event, isExpanded) => {
         setExpanded(isExpanded ? panel : false);
     };
 
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+
+  
+    const handleClose = () => {
+        setOpen(false);
+    
+
+      
+    };
+
     return (
         <div>
+           
             <Accordion m={0} p={0} expanded={expanded === 'panel1'} onChange={handleChange('panel1')} style={Accord}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -34,25 +60,66 @@ export default function AccordianBox(props) {
 
 
                 >
-                    <Typography sx={{ flexShrink: 0, fontWeight: 'bolder', fontSize: '1.2rem' ,margin:'0 20px',width:'15vw',textAlign:'center'}}>
+                    <Typography sx={{ flexShrink: 0, fontWeight: 'bolder', fontSize: '1.2rem', margin: '0 20px', width: '15vw', textAlign: 'center' }}>
                         {props.title}
                     </Typography>
-                    <Typography sx={{ color: 'text.secondary',  color: '#211f1f',width:'25vw', textAlign:'left' }}> Lorem ipsum dolor sit amet consectetur adipisicing</Typography>
-                    <Typography sx={{ color: 'text.secondary', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',width:'40vw',textAlign:'center' }}> {props.message} </Typography>
-                    <Typography sx={{ color: 'text.secondary',  textAlign: 'right',width:'10vw' }}>23-feb-2023</Typography>
+                    <Typography sx={{ color: 'text.secondary', margin: ' 0 20px', color: '#211f1f', width: '25vw', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'left' }}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit eligendi labore quas qui inventore ratione perferendis eius, dignissimos pariatur, distinctio architecto porro sint nostrum. Vitae culpa laborum ab omnis obcaecati repellat quos at molestias eius facilis earum sit a nulla maxime exercitationem dolor explicabo eum incidunt illo, tempora maiores nobis eveniet </Typography>
+                    <Typography sx={{ color: 'text.secondary', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: '35vw', textAlign: 'center', margin: '0 20px' }}> {props.message} </Typography>
+                    <Typography sx={{ color: 'text.secondary', textAlign: 'right', width: '10vw' }}>23-feb-2023</Typography>
+
                 </AccordionSummary>
                 <AccordionDetails style={AccordSum}>
-                    <Typography variant='h5' sx={{ margin: '10px' }}>
-                       {props.title}
-                    </Typography>
-                    <Typography sx={{ margin: '10px' }} >
-                        Sub-heading
-                    </Typography>
-                    <Typography sx={{margin:'0 10px'}}>
-                    {props.message} 
-                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <Box>
+                            <Typography variant='h5' sx={{ margin: '10px' }}>
+                                {props.title}
+                            </Typography>
+                            <Typography sx={{ margin: '10px' }} >
+                                Sub-heading
+                            </Typography>
+                            <Typography sx={{ margin: '0 10px' }}>
+                                {props.message}
+                            </Typography>
+
+                        </Box>
+                        <Box>
+                            <IconButton sx={{ color: "black" }}>
+
+                                <DeleteIcon onClick={handleClickOpen} />
+                                <Dialog
+                                    
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="responsive-dialog-title"
+                                >
+                                    <DialogTitle id="responsive-dialog-title">
+                                    Delete Notification
+                                    </DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText>
+                                          Are you sure to delete this message?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button autoFocus  onClick={handleClose}>
+                                            No
+                                        </Button>
+                                        <Button onClick={handleClose} variant='contained' autoFocus>
+                                            Yes
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+
+                            </IconButton>
+
+
+                        </Box>
+                    </Box>
+
+
                 </AccordionDetails>
             </Accordion>
+    
 
         </div>
     );

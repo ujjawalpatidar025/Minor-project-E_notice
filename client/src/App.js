@@ -12,6 +12,7 @@ import IIP from "./Pages/IIP";
 import IIMR from "./Pages/IIMR";
 
 import RequiredAuth from './Pages/RequiredAuth';
+import Query from "./Pages/Query";
 
 
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/iist" element={<IIST />} />
           <Route path="/iip" element={<IIP />} />
           <Route path="/iimr" element={<IIMR />} />
+          <Route path="/query" element={<Query/>} />
         </Route>
       </Routes>
     </div>

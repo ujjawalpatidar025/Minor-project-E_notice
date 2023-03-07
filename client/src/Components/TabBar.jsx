@@ -39,7 +39,7 @@ export default function TabBar() {
         },
         {
             title:"Codechef",
-            message:"helo everyone",
+            message:"helo everyone lorem adlkjfhjksf ,fnwfsdf sdflnksnfsk fsdlfknwf.fn sdfwjs f sdkljwf . fklinewr sdflkk",
             date:"27-feb-2023",
             type:'Spam'
         }
@@ -120,7 +120,7 @@ export default function TabBar() {
       </Tabs>
       <Box style={{height:'28rem',width:'100vw',overflow:'auto'}}>
       {data.filter(person => person.type ===value).map(filteredPerson => (
-    <AccordianBox title={filteredPerson.type}/>
+    <AccordianBox title={filteredPerson.type} message={filteredPerson.message}/>
   ))}
     </Box>
 

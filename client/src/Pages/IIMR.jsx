@@ -17,7 +17,7 @@ const IIMR = () => {
     <div>
   
 
-      <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' }}> IIMR Messages</Typography>
+      <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px',display: 'flex', alignItems: 'center' }}> IIMR Messages</Typography>
       <TabBar/>
       
 
