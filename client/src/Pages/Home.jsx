@@ -1,16 +1,21 @@
 
-import React from 'react'
-import Navbar from '../Components/Navbar'
+import React, { useEffect } from 'react'
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import TabBar from '../Components/TabBar';
-import Layout from './Layout';
-
+import {useDispatch} from 'react-redux';
+import { allMessages } from '../Redux/features/messages/messageSlice';
 
 
 
 const Home = () => {
+  const dispatch=useDispatch();
 
+
+  useEffect(() => {
+    console.log("home")
+    dispatch(allMessages());
+  }, [])
+  
   
 
   return (

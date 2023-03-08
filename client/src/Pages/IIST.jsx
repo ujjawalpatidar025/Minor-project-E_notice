@@ -1,16 +1,23 @@
 
-import React from 'react'
-import Navbar from '../Components/Navbar'
+import React, { useEffect } from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TabBar from '../Components/TabBar';
-import Layout from './Layout';
+import { useDispatch } from 'react-redux';
+import { iistMessages } from '../Redux/features/messages/messageSlice';
+
 
 
 
 
 const IIST = () => {
 
+  const dispatch=useDispatch();
+
+  useEffect(() => {
+    console.log("iist")
+    dispatch(iistMessages());
+  }, [])
   
 
   return (

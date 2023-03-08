@@ -12,22 +12,29 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import LiveHelpIcon from '@mui/icons-material/LiveHelp';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
+import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch} from 'react-redux';
+import {logout} from '../Redux/features/auth/authSlice'
+
 
 const pages = ['IIST', 'IIP', 'IIMR'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Nav={
     backgroundColor:'transparent',
     color:'black',
-    boxShadow:'none'
+    boxShadow:'none',
+   
 }
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const dispatch = useDispatch();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -44,13 +51,25 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
+  const handleLogoutUser = async()=>{
+    try{
 
-  const [isAdmini, setisAdmini] = useState("false")
+       const logoutSuccess=await axios.get('/signout');
+       if(logoutSuccess){localStorage.clear(); window.location.pathname='/';}
+
+    }catch(err){
+      console.log(err);
+    }
+    setAnchorElUser(null);
+  }
+  const [isAdmin, setisAdmin] = useState(false);
+
+  
 
 
 
   return (
-    <AppBar position="static" sx={Nav}>
+    <AppBar position="static" top='0'  sx={Nav}>
       <Container maxWidth="xl" sx={{color:'black'}}>
         <Toolbar disableGutters sx={{color:'black'}}>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -129,24 +148,43 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              
-              <Link to={`/${page}`}><Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2,mx:2, color: 'black', display: 'block' ,fontWeight:'bolder',fontSize:'1rem'}}
-              >
-                {page}
-              </Button>
-              </Link>
+               <Link to={`/${page}`} style={{textDecoration:'none'}}><Button
+               key={page}
+               onClick={handleCloseNavMenu}
+               sx={{ my: 2,mx:2, color: 'black', display: 'block' ,fontWeight:'bolder',fontSize:'1rem'}}
+             >
+               {page}
+             </Button>
+             </Link>
             ))}
+
+            {isAdmin&&
+            <Box style={{width:'5rem',display:'flex',justifyContent:'center',alignItems:'center'}}>
+            <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto'}}/>
+            </Link>
+            </Box>
+            }
+            
+
+            
+
           </Box>
+          <Tooltip title="Query Section">
+            <Link to='/query' style={{textDecoration:'none',color:'black'}}>
+          <ContactSupportOutlinedIcon fontSize='medium' sx={{display:'flex',justifyContent:'center', alignItems:'center',margin:' 0 30px',cursor:'pointer'}}/>
+          </Link>
+          
+          </Tooltip>
 
           <Box sx={{ flexGrow: 0 }}>
+          
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+             < AccountCircleTwoToneIcon sx={{fontSize:'2rem'}}/>
               </IconButton>
             </Tooltip>
+           
+            
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -163,11 +201,9 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem  onClick={handleLogoutUser}>
+                  <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
