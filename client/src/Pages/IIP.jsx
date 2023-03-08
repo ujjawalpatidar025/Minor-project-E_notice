@@ -1,14 +1,22 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TabBar from '../Components/TabBar';
+import { useDispatch } from 'react-redux';
+import { iipMessages } from '../Redux/features/messages/messageSlice';
 
 
 
 
 const IIP = () => {
+  const dispatch=useDispatch();
 
+  useEffect(() => {
+    console.log("iip")
+    dispatch(iipMessages());
+  }, [])
+  
   
 
   return (
