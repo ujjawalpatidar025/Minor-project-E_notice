@@ -10,7 +10,6 @@ export const verifyToken=(req, res, next)=>{
         req.user=user;
         req.token=token;
         res.send({loggedIn:true})
-        console.log(req.token);
         next();
     })
 }
