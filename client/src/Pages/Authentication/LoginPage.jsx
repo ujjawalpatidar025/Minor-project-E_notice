@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -12,36 +10,26 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import iistImg from '../Images/iistImg.jpg'
+import iistImg from '../../Images/iistImg.jpg'
 import { Collapse } from '@mui/material';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useDispatch} from 'react-redux';
-import { isloading, isLoginError, isLoginSuccess } from '../Redux/Slices/userSlice';
-import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../../Redux/features/auth/authSlice';
+import LoadingPage from './LoadingPage';
 
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const theme = createTheme();
 
-export default function Landing() {
-  const[check, setChecked]=useState(false);
-  const [error, setError]=useState("");
-  const dispatch=useDispatch();
+export default function LoginPage() {
   const navigate=useNavigate();
+  const dispatch=useDispatch();
+  const {isSuccess, isError, isLoading, message, user}=useSelector((state)=> state.auth);
+
+  const[check, setChecked]=useState(false);
+  
   
   useEffect(()=>{
      setChecked(true);
@@ -50,41 +38,20 @@ export default function Landing() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    dispatch(isloading());
     const data = new FormData(event.currentTarget);
     const loginData = {
       email: data.get("email"),
       password: data.get("password"),
     };
-    const email = loginData.email;
-    const password = loginData.password;
-    axios.defaults.withCredentials=true;
-    if (!email || !password) setError("Please Fill All the necesarry details");
-    else {
-      try {
-        const user = await axios.post("/signin/", {
-          email,
-          password,
-        },
-       );
-        if (!user) setError("Invalid Credentials.");
-        else {
-          dispatch(isLoginSuccess());
-          navigate("/home");
-          localStorage.setItem("user", user.data);
-          console.log(user.data);
-        }
-      } catch (err) {
-        dispatch(isLoginError());
-        localStorage.removeItem("user");
-        setError("Invalid Credentials.");
-        console.log(err);
-      }
-    }
+    dispatch(login(loginData));
   };
 
+
+
+
   return (
-    <ThemeProvider theme={theme}>
+    (isSuccess || user)? navigate('/home') :
+    (isLoading)?  <LoadingPage/> :  (<ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -240,17 +207,12 @@ export default function Landing() {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2" color={"rgb(33 109 48)"}>
+                  <Link href="#" variant="body2" color={"rgb(33 109 48)"} >
                     Forgot password?
                   </Link>
                 </Grid>
-                <Grid item>
-                  <Link href="#" variant="body2" color={"rgb(33 109 48)"}>
-                    {"Don't have an account? Sign Up"}
-                  </Link>
-                </Grid>
               </Grid>
-              {error&&<Grid
+              {isError&&<Grid
                 item
                 sx={{
                   marginTop: "20px",
@@ -261,13 +223,12 @@ export default function Landing() {
                   alignItems: "center",
                 }}
               >
-                <Box color={"red"}>{error}</Box>
+                <Box color={"red"}>{message}</Box>
               </Grid>}
-              {/* <Copyright sx={{ mt: 5 }} /> */}
             </Box>
           </Box>
         </Grid>
       </Grid>
-    </ThemeProvider>
+    </ThemeProvider>)
   );
 }

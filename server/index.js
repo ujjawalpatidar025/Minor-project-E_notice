@@ -2,13 +2,19 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import signInRoute from "./routes/authentication/signin.js";
+import signOutRoute from "./routes/authentication/signout.js";
+import createMessages from "./routes/Messages/createMessages.js";
+import getMessages from "./routes/Messages/getMessages.js";
+import crtquery from './routes/Query/createQuery.js'
+import getquery from './routes/Query/getQuery.js'
+import crtquerysolution from './routes/Query/createsolution.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { verifyToken } from "./verifyToken.js";
 
 const app=express();
 dotenv.config();
-app.use(cors({methods:["GET", "POST"],credentials: true}));
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 
 
@@ -34,7 +40,14 @@ const connection = ()=>{
 app.use(cookieParser());
 app.use(express.json()); 
 app.use("/signin", signInRoute);
+app.use("/signout", signOutRoute);
+app.use('/crtMessages', createMessages);
+app.use('/getMessages', getMessages);
+app.use('/crtquery', crtquery);
+app.use('/getquery', getquery);
+app.use('/crtquerysolution', crtquerysolution);
 app.get("/verifyToken", verifyToken);
+
 
 
 
