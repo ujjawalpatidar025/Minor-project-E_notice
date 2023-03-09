@@ -18,7 +18,7 @@ import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlin
 import { useState } from 'react';
 import { Link} from 'react-router-dom';
 import axios from 'axios';
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import {logout} from '../Redux/features/auth/authSlice'
 
 
@@ -35,6 +35,7 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const dispatch = useDispatch();
+  const {user} = useSelector((state)=> state.auth)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -62,7 +63,7 @@ function Navbar() {
     }
     setAnchorElUser(null);
   }
-  const [isAdmin, setisAdmin] = useState(true);
+  // const [isAdmin, setisAdmin] = useState(user.admin);
 
   
 
@@ -157,8 +158,7 @@ function Navbar() {
              </Button>
              </Link>
             ))}
-
-            {isAdmin&&
+            {user.admin&&
             <Box style={{width:'5rem',display:'flex',justifyContent:'center',alignItems:'center'}}>
             <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto'}}/>
             </Link>
