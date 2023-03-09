@@ -81,7 +81,7 @@ export default function TabBar() {
 //   ];
 
   //   const val=['1','2','3','4','5'];
-  const [value, setValue] = useState("general");
+  const [value, setValue] = useState("General");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -104,11 +104,11 @@ export default function TabBar() {
           indicatorColor="primary"
           aria-label="secondary tabs example"
         >
-          <Tab value="general" label="General" sx={{ width: "20vw" }} />
-          <Tab value="academic" label="Academic" sx={{ width: "20vw" }} />
-          <Tab value="social" label="Social" sx={{ width: "20vw" }} />
-          <Tab value="community" label="Community" sx={{ width: "20vw" }} />
-          <Tab value="spam" label="Spam" sx={{ width: "20vw" }} />
+          <Tab value="General" label="General" sx={{ width: "20vw" }} />
+          <Tab value="Academic" label="Academic" sx={{ width: "20vw" }} />
+          <Tab value="Social" label="Social" sx={{ width: "20vw" }} />
+          <Tab value="Community" label="Community" sx={{ width: "20vw" }} />
+          <Tab value="Spam" label="Spam" sx={{ width: "20vw" }} />
         </Tabs>
         <Box style={{ height: "28rem", width: "100vw", overflow: "auto" }}>
           {Object.values(noticeMessages)

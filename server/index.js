@@ -5,6 +5,7 @@ import signInRoute from "./routes/authentication/signin.js";
 import signOutRoute from "./routes/authentication/signout.js";
 import createMessages from "./routes/Messages/createMessages.js";
 import getMessages from "./routes/Messages/getMessages.js";
+import deleteMessages from './routes/Messages/deleteMessages.js';
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { verifyToken } from "./verifyToken.js";
@@ -40,6 +41,7 @@ app.use("/signin", signInRoute);
 app.use("/signout", signOutRoute);
 app.use('/crtMessages', createMessages);
 app.use('/getMessages', getMessages);
+app.use('/delMessages', deleteMessages);
 app.get("/verifyToken", verifyToken);
 
 

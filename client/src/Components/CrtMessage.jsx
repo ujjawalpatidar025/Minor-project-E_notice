@@ -17,6 +17,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { useState } from 'react';
+import axios from 'axios';
+// import { useLocation } from 'react-router-dom';
+
+import {useNavigate} from "react-router-dom"
 
 function Copyright(props) {
     return (
@@ -43,13 +47,14 @@ export default function CrtMessage() {
         heading: "",
         subheading: "",
         institute: "",
-        branch: "",
+        batchYear: "",
         category: "",
         message: ""
 
     })
 
     const [open, setOpen] = React.useState(false);
+    const navigate=useNavigate();
 
     const handleClick = () => {
       setOpen(true);
@@ -73,6 +78,36 @@ export default function CrtMessage() {
             }
         })
     }
+    
+    const[successMessage, setSuccessMessage]=useState("");
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log(data);
+        const createMessage= {
+            heading: data.get('heading'),
+            subHeading:data.get('subHeading'),
+            batchYear: data.get('batchYear'),
+            message:data.get('message'),
+            category:data.get('category'),
+            institute:data.get('institute'),
+        }
+    
+
+        try{
+            axios.defaults.withCredentials=true;
+            // console.log(createMessage);
+            const response=await axios.post('/crtMessages', createMessage);
+            navigate('/home');
+            setSuccessMessage(JSON.stringify((response.data)));
+            alert(JSON.stringify((response.data)));
+            // console.log(`${JSON.stringify((response.data))}`);
+        }catch(error){
+            setSuccessMessage(error.response.data.message);
+           console.log(error.response.data.message);
+        }
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -97,7 +132,7 @@ export default function CrtMessage() {
                     <Typography component="h1" variant="h5">
                        Create Message
                     </Typography>
-                    <Box  noValidate sx={{ mt: 3 }}>
+                    <Box  component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }} >
                         <Grid container spacing={2}>
 
                             <Grid item xs={12}>
@@ -145,7 +180,7 @@ export default function CrtMessage() {
                                 <TextField
                                     select
                                     autoComplete="given-name"
-                                    name="batch"
+                                    name="batchYear"
                                     required
                                     fullWidth
                                     id="Batch"
@@ -180,7 +215,7 @@ export default function CrtMessage() {
                                     fullWidth
                                     id="Sub-Heading"
                                     label="Sub-heading"
-                                    name="subheading"
+                                    name="subHeading"
                                     autoComplete="family-name"
                                     onChange={setval}
                                 />
@@ -212,7 +247,6 @@ export default function CrtMessage() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                            onClick={handleClick}
                         >
                             Post Message
                         </Button>

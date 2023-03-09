@@ -146,6 +146,21 @@ export const iimrMessages = createAsyncThunk('/getMessages/IIMR' , async(thunkAP
 })
 
 
+export const deleteMessages = createAsyncThunk('/deleteMessages' , async(id, thunkAPI)=>{
+
+    try {
+        return await messageService.deleteMessage(id)
+        
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message) 
+    }
+
+})
+
+
+
+
 
 
 

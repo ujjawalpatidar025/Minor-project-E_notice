@@ -62,7 +62,7 @@ function Navbar() {
     }
     setAnchorElUser(null);
   }
-  const [isAdmin, setisAdmin] = useState(false);
+  const [isAdmin, setisAdmin] = useState(true);
 
   
 
