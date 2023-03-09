@@ -15,7 +15,7 @@ import { useTheme } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box, IconButton,Button } from '@mui/material';
 import { deleteMessages } from '../Redux/features/messages/messageSlice';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
 const Accord = {
@@ -31,6 +31,7 @@ const AccordSum = {
 
 export default function AccordianBox(props) {
     const [expanded, setExpanded] = React.useState(false);
+    const {user} = useSelector((state)=> state.auth)
     const dispatch=useDispatch();
     const navigate=useNavigate();
 
@@ -91,7 +92,7 @@ export default function AccordianBox(props) {
                             </Typography>
 
                         </Box>
-                        <Box>
+                        {user.admin&&<Box>
                             <IconButton sx={{ color: "black" }}>
 
                                 <DeleteIcon onClick={handleClickOpen} />
@@ -122,7 +123,7 @@ export default function AccordianBox(props) {
                                     </DialogActions>
                                 </Dialog>
 
-                        </Box>
+                        </Box>}
                     </Box>
 
 
