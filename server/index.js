@@ -8,6 +8,7 @@ import getMessages from "./routes/Messages/getMessages.js";
 import crtquery from './routes/Query/createQuery.js'
 import getquery from './routes/Query/getQuery.js'
 import crtquerysolution from './routes/Query/createsolution.js'
+import deleteMessages from './routes/Messages/deleteMessages.js';
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { verifyToken } from "./verifyToken.js";
@@ -46,6 +47,7 @@ app.use('/getMessages', getMessages);
 app.use('/crtquery', crtquery);
 app.use('/getquery', getquery);
 app.use('/crtquerysolution', crtquerysolution);
+app.use('/delMessages', deleteMessages);
 app.get("/verifyToken", verifyToken);
 
 

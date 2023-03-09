@@ -14,7 +14,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box, IconButton,Button } from '@mui/material';
-
+import { deleteMessages } from '../Redux/features/messages/messageSlice';
+import {useDispatch} from 'react-redux';
+// import {useNavigate} from 'react-router-dom';
 
 const Accord = {
     backgroundColor: 'transparent',
@@ -29,7 +31,8 @@ const AccordSum = {
 
 export default function AccordianBox(props) {
     const [expanded, setExpanded] = React.useState(false);
-
+    const dispatch=useDispatch();
+    // const navigate=useNavigate();
 
 
     const handleChange = (panel) => (event, isExpanded) => {
@@ -48,6 +51,10 @@ export default function AccordianBox(props) {
 
       
     };
+    // const onDeleteMessage=(id, page)=>{
+    //     dispatch(deleteMessages(id));
+    //     // navigate(`/${page}`);
+    // }
 
     return (
         <div>
@@ -104,7 +111,7 @@ export default function AccordianBox(props) {
                                         <Button autoFocus  onClick={handleClose}>
                                             No
                                         </Button>
-                                        <Button onClick={handleClose} variant='contained' autoFocus>
+                                        <Button  variant='contained' autoFocus>
                                             Yes
                                         </Button>
                                     </DialogActions>
