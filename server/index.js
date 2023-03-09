@@ -38,9 +38,9 @@ app.use(cookieParser());
 app.use(express.json()); 
 app.use("/signin", signInRoute);
 app.use("/signout", signOutRoute);
-app.get("/verifyToken", verifyToken);
 app.use('/crtMessages', createMessages);
 app.use('/getMessages', getMessages);
+app.get("/verifyToken", verifyToken);
 
 
 
