@@ -73,7 +73,7 @@ const Query = () => {
 
 
 
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+                <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
                     <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
                         <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
                             <AccountCircleIcon />
@@ -88,10 +88,7 @@ const Query = () => {
                         <Typography p={2}>
 
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
-
+                           
                         </Typography>
                         <IconButton >
                             <ArrowCircleRightIcon fontSize='large' />
@@ -106,43 +103,7 @@ const Query = () => {
 
 
 
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
-                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                            <AccountCircleIcon />
-                            <Typography marginX={2}>Anonymous</Typography>
-                        </Box>
-                        <Box>
-                            7-March-2023
-
-                        </Box>
-                    </Box>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography p={2}>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
-
-                        </Typography>
-                        <IconButton >
-                            <ArrowCircleRightIcon fontSize='large' />
-
-                        </IconButton>
-
-                    </Box>
-
-                </Paper>
-
-
-
-
-
-
-
-
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+                <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
                     <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
                         <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
                             <AccountCircleIcon />
@@ -178,8 +139,44 @@ const Query = () => {
 
 
 
+                <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
+                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
+                            <AccountCircleIcon />
+                            <Typography marginX={2}>Anonymous</Typography>
+                        </Box>
+                        <Box>
+                            7-March-2023
 
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+                        </Box>
+                    </Box>
+                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Typography p={2}>
+
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
+
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
+
+                        </Typography>
+                        <IconButton >
+                            <ArrowCircleRightIcon fontSize='large' />
+
+                        </IconButton>
+
+                    </Box>
+
+                </Paper>
+
+
+
+
+
+
+
+
+
+                <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
                     <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
                         <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
                             <AccountCircleIcon />

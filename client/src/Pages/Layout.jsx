@@ -49,7 +49,7 @@ function Layout() {
   };
 
 
-  const [isAdmin, setisAdmin] = useState(false);
+  const [isAdmin, setisAdmin] = useState(true);
 
   
 
@@ -147,7 +147,7 @@ function Layout() {
 
             {isAdmin&&
             <Box style={{width:'5rem',display:'flex',justifyContent:'center',alignItems:'center'}}>
-            <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto'}}/>
+            <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon color='primary'  sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto'}}/>
             </Link>
             </Box>
             }
