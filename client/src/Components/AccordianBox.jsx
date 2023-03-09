@@ -16,7 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Box, IconButton,Button } from '@mui/material';
 import { deleteMessages } from '../Redux/features/messages/messageSlice';
 import {useDispatch} from 'react-redux';
-// import {useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 const Accord = {
     backgroundColor: 'transparent',
@@ -32,7 +32,7 @@ const AccordSum = {
 export default function AccordianBox(props) {
     const [expanded, setExpanded] = React.useState(false);
     const dispatch=useDispatch();
-    // const navigate=useNavigate();
+    const navigate=useNavigate();
 
 
     const handleChange = (panel) => (event, isExpanded) => {
@@ -51,10 +51,12 @@ export default function AccordianBox(props) {
 
       
     };
-    // const onDeleteMessage=(id, page)=>{
-    //     dispatch(deleteMessages(id));
-    //     // navigate(`/${page}`);
-    // }
+    const handleDeleteMessage=(id)=>{
+        dispatch(deleteMessages(id));
+        alert("Message Deleted")
+        window.location.reload();
+        setOpen(false);
+    }
 
     return (
         <div>
@@ -93,7 +95,10 @@ export default function AccordianBox(props) {
                             <IconButton sx={{ color: "black" }}>
 
                                 <DeleteIcon onClick={handleClickOpen} />
-                                <Dialog
+                                
+
+                            </IconButton>
+                            <Dialog
                                     
                                     open={open}
                                     onClose={handleClose}
@@ -111,14 +116,11 @@ export default function AccordianBox(props) {
                                         <Button autoFocus  onClick={handleClose}>
                                             No
                                         </Button>
-                                        <Button  variant='contained' autoFocus>
+                                        <Button  variant='contained' autoFocus onClick={()=>{handleDeleteMessage(props._id)}}>
                                             Yes
                                         </Button>
                                     </DialogActions>
                                 </Dialog>
-
-                            </IconButton>
-
 
                         </Box>
                     </Box>
