@@ -12,14 +12,13 @@ const Home = () => {
 
 
   useEffect(() => {
-    console.log("home")
     dispatch(allMessages());
   }, [])
   
   
 
   return (
-    <div>
+    <div style={{width:'100%'}}>
   
 
       <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' ,display: 'flex', alignItems: 'center'}}> All Messages</Typography>
