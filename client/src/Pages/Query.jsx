@@ -10,11 +10,21 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import React from 'react'
+import React, { useEffect } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getQueries } from '../Redux/features/query/queriesSlice';
 
 const Query = () => {
+    
+    const dispatch = useDispatch();
+    const {allQueries}=useSelector((state)=>state.queries)
+    console.log(allQueries)
+    useEffect(() => {
+        dispatch(getQueries());
+    }, [])
+
 
     const [open, setOpen] = React.useState(false);
     const [dopen, setdopen] = React.useState(false);
@@ -90,67 +100,65 @@ const Query = () => {
                 <Typography variant='h4' color='primary' sx={{ height: '5rem', padding: '20px', display: 'flex', alignItems: 'center' }}> Having Queries and Doubts ???? Post here</Typography>
                 <AddCircleIcon fontSize='large' onClick={handleClickOpen} color='primary' style={{ padding: '0 20px ', cursor: 'pointer' }} />
             </Box>
+            
+
+
+            
+
             <Paper style={{ height: '73vh', width: '100vw', margin: 'auto', backgroundColor: '#c2c2c270', overflow: 'auto' }}>
+{
+    Object.values(allQueries).map((item)=>{
+        return <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+        <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
+            <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
+                <AccountCircleIcon />
+                <Typography marginX={2}>Anonymous</Typography>
+                <IconButton onClick={handleDelete}> <DeleteIcon fontSize='medium' style={{ color: 'black' }} /></IconButton>
+                <Dialog open={dopen} onClose={handleDeleteClose} style={{ width: '50vw', margin: 'auto' }}>
+                    <DialogTitle style={{ width: '30vw', margin: 'auto' }}>Delete Query</DialogTitle>
+                    <DialogContent  >
+                        <DialogContentText >
+                            Are you sure to delete this query :
+                        </DialogContentText>
+                       
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleDeleteClose}>Cancel</Button>
+                        <Button onClick={handleDeleteClose}  variant='contained' >Delete</Button>
+                    </DialogActions>
+                </Dialog>
+    
+            </Box>
+            <Box>
+    
+            {new Date(item.updatedAt).toLocaleString()}
+    
+    
+            </Box>
+        </Box>
+        <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography p={2}>
+    
+                {item.query}
+    
+            </Typography>
+    
+            <IconButton >
+    
+    
+                <Link to={`/querySol/${item._id}`} style={{ textDecoration: 'none', color: 'black' }}><ArrowCircleRightIcon fontSize='large' /></Link>
+    
+            </IconButton>
+    
+        </Box>
+    
+    </Paper>
+    })
+}
 
 
 
-                <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
-                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                            <AccountCircleIcon />
-                            <Typography marginX={2}>Anonymous</Typography>
-                            <IconButton onClick={handleDelete}> <DeleteIcon fontSize='medium' style={{ color: 'black' }} /></IconButton>
-                            <Dialog open={dopen} onClose={handleDeleteClose} style={{ width: '50vw', margin: 'auto' }}>
-                                <DialogTitle style={{ width: '30vw', margin: 'auto' }}>Delete Query</DialogTitle>
-                                <DialogContent  >
-                                    <DialogContentText >
-                                        Are you sure to delete this query :
-                                    </DialogContentText>
-                                   
-                                </DialogContent>
-                                <DialogActions>
-                                    <Button onClick={handleDeleteClose}>Cancel</Button>
-                                    <Button onClick={handleDeleteClose}  variant='contained' >Delete</Button>
-                                </DialogActions>
-                            </Dialog>
-
-                        </Box>
-                        <Box>
-
-                            7-March-2023
-
-
-                        </Box>
-                    </Box>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography p={2}>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-
-                        </Typography>
-
-                        <IconButton >
-
-
-                            <Link to='/querySol' style={{ textDecoration: 'none', color: 'black' }}><ArrowCircleRightIcon fontSize='large' /></Link>
-
-                        </IconButton>
-
-                    </Box>
-
-                </Paper>
-
-
-
-
-
-
-
-
-
-            </Paper>
-
-
+</Paper>
         </div>
     )
 }

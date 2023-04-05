@@ -33,6 +33,16 @@ export const getquery = async (req, res, next) => {
         next(error);
     }
 }
+export const getSpecificQuery=async (req, res, next) => {
+    try {
+        const {id}=req.params
+        const query = await Query.findById(id);
+        res.status(200).json(query);
+
+    } catch (error) {
+        next(error);
+    }
+}
 
 export const createquerysolution = async (req, res, next) => {
     try {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Paper, Typography, Button, IconButton } from '@mui/material'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import TextField from '@mui/material/TextField';
@@ -12,7 +12,9 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Snackbar from '@mui/material/Snackbar';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSpecificQuery } from '../Redux/features/query/queriesSlice';
 
 
 
@@ -20,11 +22,23 @@ import { Link } from 'react-router-dom';
 
 
 const QuerySol = () => {
+    const {id}=useParams();
+    const dispatch =useDispatch()
+
+    const {getQuery}=useSelector((state)=>state.queries)
+    console.log(getQuery.querySolution)
+    // const [solutions, setSolutions]=useState([]);
+    // console.log(solutions)
+    
+   useEffect(()=>{
+     dispatch(getSpecificQuery(id));
+    //  setSolutions(getQuery.querySolution)
+   }, [])
 
     const [open, setOpen] = React.useState(false);
     const [dopen, setdopen] = React.useState(false);
-    const [querySolution,setquerySolution]=React.useState("");
-    console.log(querySolution);
+    // const [querySolution,setquerySolution]=React.useState("");
+    // console.log(querySolution);
 
 
     const handleDelete = () => {
@@ -44,7 +58,7 @@ const QuerySol = () => {
     };
 
     const handleQuerySolution=(e)=>{
-        setquerySolution(e.target.value);
+        // setquerySolution(e.target.value);
     }
     return (
         <div>
@@ -115,36 +129,39 @@ const QuerySol = () => {
                     <AddCircleIcon fontSize='large' onClick={handleClickOpen} color='primary' style={{ padding: '0 20px ', cursor: 'pointer' }} />
                 </Box>
 
+{getQuery.querySolution && getQuery.querySolution.map(element =>{
+   return <Paper elevation={3} style={{ backgroundColor: '#eceaea', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
+        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
+            <AccountCircleIcon />
+            <Typography marginX={2}>Anonymous</Typography>
 
 
-                <Paper elevation={3} style={{ backgroundColor: '#eceaea', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
-                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                            <AccountCircleIcon />
-                            <Typography marginX={2}>Anonymous</Typography>
+        </Box>
+        <Box>
+
+        {new Date(element.updatedAt).toLocaleString()}
 
 
-                        </Box>
-                        <Box>
+        </Box>
+    </Box>
+    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Typography p={2}>
 
-                            7-March-2023
+            {element.solution}
 
-
-                        </Box>
-                    </Box>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography p={2}>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-
-                        </Typography>
+        </Typography>
 
 
-                    </Box>
+    </Box>
 
-                </Paper>
+</Paper>
 
 
+
+})}
+
+                
 
 
 
