@@ -8,6 +8,7 @@ import IIMR from "./Pages/IIMR";
 import Query from "./Pages/Query";
 import LoginPage from "./Pages/Authentication/LoginPage";
 import ProtectedRoute from "./Pages/Authentication/ProtectedRoute";
+import QuerySol from "./Pages/QuerySol";
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/iip" element={<IIP />} />
           <Route path="/iimr" element={<IIMR />} />
           <Route path="/query" element={<Query />} />
+          <Route path="/querySol" element={<QuerySol />} />
         </Route>
       </Routes>
     </div>

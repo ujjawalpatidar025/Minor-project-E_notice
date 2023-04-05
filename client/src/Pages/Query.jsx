@@ -11,17 +11,32 @@ import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import React from 'react'
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
 
 const Query = () => {
 
     const [open, setOpen] = React.useState(false);
+    const [dopen, setdopen] = React.useState(false);
+    const [queryMessage,setqueryMessage]=React.useState("");
+
     const [Snackopen, setSnackopen] = React.useState(false);
+
+    
     const handleClickOpen = () => {
         setOpen(true);
     };
+
+    const handleDelete=()=>{
+        setdopen(true);
+    }
+
+    const handleDeleteClose=()=>{
+        setdopen(false);
+    }
     const [post, setpost] = React.useState(false);
 
-    const checkPost=()=>{
+    const checkPost = () => {
         setpost(true);
         setOpen(false);
     }
@@ -37,12 +52,17 @@ const Query = () => {
     const handleClose = () => {
         setOpen(false);
     };
+
+
+    const handleQueryMessage=(e)=>{
+        setqueryMessage(e.target.value);
+    }
     return (
         <div>
             {post && <Snackbar open={post} autoHideDuration={3000} onClose={handleSnackClose}  >
 
                 <Alert onClose={handleSnackClose} variant="filled" severity="success" sx={{ width: '100%', color: 'white' }}>
-                   Query Posted Successfully!!!!!
+                    Query Posted Successfully!!!!!
                 </Alert></Snackbar>}
             <Dialog open={open} onClose={handleClose} style={{ width: '50vw', margin: 'auto' }}>
                 <DialogTitle style={{ width: '30vw', margin: 'auto' }}>Post Query</DialogTitle>
@@ -57,6 +77,7 @@ const Query = () => {
                         multiline
                         rows={4}
                         style={{ margin: '10px 0' }}
+                        onChange={handleQueryMessage}
 
                     />
                 </DialogContent>
@@ -73,14 +94,31 @@ const Query = () => {
 
 
 
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
+                <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
                     <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
                         <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
                             <AccountCircleIcon />
                             <Typography marginX={2}>Anonymous</Typography>
+                            <IconButton onClick={handleDelete}> <DeleteIcon fontSize='medium' style={{ color: 'black' }} /></IconButton>
+                            <Dialog open={dopen} onClose={handleDeleteClose} style={{ width: '50vw', margin: 'auto' }}>
+                                <DialogTitle style={{ width: '30vw', margin: 'auto' }}>Delete Query</DialogTitle>
+                                <DialogContent  >
+                                    <DialogContentText >
+                                        Are you sure to delete this query :
+                                    </DialogContentText>
+                                   
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleDeleteClose}>Cancel</Button>
+                                    <Button onClick={handleDeleteClose}  variant='contained' >Delete</Button>
+                                </DialogActions>
+                            </Dialog>
+
                         </Box>
                         <Box>
+
                             7-March-2023
+
 
                         </Box>
                     </Box>
@@ -88,46 +126,13 @@ const Query = () => {
                         <Typography p={2}>
 
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
 
                         </Typography>
+
                         <IconButton >
-                            <ArrowCircleRightIcon fontSize='large' />
-
-                        </IconButton>
-
-                    </Box>
-
-                </Paper>
 
 
-
-
-
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
-                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                            <AccountCircleIcon />
-                            <Typography marginX={2}>Anonymous</Typography>
-                        </Box>
-                        <Box>
-                            7-March-2023
-
-                        </Box>
-                    </Box>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography p={2}>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
-
-                        </Typography>
-                        <IconButton >
-                            <ArrowCircleRightIcon fontSize='large' />
+                            <Link to='/querySol' style={{ textDecoration: 'none', color: 'black' }}><ArrowCircleRightIcon fontSize='large' /></Link>
 
                         </IconButton>
 
@@ -140,73 +145,6 @@ const Query = () => {
 
 
 
-
-
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
-                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                            <AccountCircleIcon />
-                            <Typography marginX={2}>Anonymous</Typography>
-                        </Box>
-                        <Box>
-                            7-March-2023
-
-                        </Box>
-                    </Box>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography p={2}>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
-
-                        </Typography>
-                        <IconButton >
-                            <ArrowCircleRightIcon fontSize='large' />
-
-                        </IconButton>
-
-                    </Box>
-
-                </Paper>
-
-
-
-
-
-
-
-
-
-                <Paper style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
-                        <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
-                            <AccountCircleIcon />
-                            <Typography marginX={2}>Anonymous</Typography>
-                        </Box>
-                        <Box>
-                            7-March-2023
-
-                        </Box>
-                    </Box>
-                    <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography p={2}>
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo recusandae, eos aliquam blanditiis doloremque?
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi, eveniet cumque doloremque vitae dolor asperiores beatae porro ullam vero debitis recusandae excepturi deserunt!
-
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sequi, aut veritatis beatae rem culpa enim, dolore exercitationem illo, aliquam suscipit deserunt natus!
-
-                        </Typography>
-                        <IconButton >
-                            <ArrowCircleRightIcon fontSize='large' />
-
-                        </IconButton>
-
-                    </Box>
-
-                </Paper>
 
 
 
