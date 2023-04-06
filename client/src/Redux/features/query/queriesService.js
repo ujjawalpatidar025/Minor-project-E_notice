@@ -13,8 +13,16 @@ const getAllQueries = async() => {
 }
 
 const getSpecificQuery =async(id)=>{
-    console.log(id)
     const response=await axios.get(`/getquery/${id}`)
+    return response.data
+}
+
+const crtQuerySolution=async(d)=>{
+    const response=await axios.post(`/crtquerysolution/${d.id}`, d);
+    return response.data
+}
+const crtQuery =async(data)=>{
+    const response=await axios.post(`/crtquery`, {query: data});
     return response.data
 }
 
@@ -29,7 +37,9 @@ const getSpecificQuery =async(id)=>{
 
 const queriesService = {
     getAllQueries,
-    getSpecificQuery
+    getSpecificQuery,
+    crtQuerySolution,
+    crtQuery
 }
 
 export default queriesService

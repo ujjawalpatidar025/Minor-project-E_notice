@@ -11,6 +11,10 @@ const QuerySchema = new Schema({
         {
             solution:{
             type:String
+            },
+            date:{
+                type: Date,
+                default: Date.now()
             }
 
         }

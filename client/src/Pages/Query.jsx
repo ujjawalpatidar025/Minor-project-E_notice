@@ -14,7 +14,7 @@ import React, { useEffect } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getQueries } from '../Redux/features/query/queriesSlice';
+import { crtQuery, getQueries } from '../Redux/features/query/queriesSlice';
 
 const Query = () => {
     
@@ -46,7 +46,11 @@ const Query = () => {
     }
     const [post, setpost] = React.useState(false);
 
-    const checkPost = () => {
+    const checkPostQuery = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const queryText = data.get("createQuery");
+        dispatch(crtQuery(queryText));
         setpost(true);
         setOpen(false);
     }
@@ -76,6 +80,10 @@ const Query = () => {
                 </Alert></Snackbar>}
             <Dialog open={open} onClose={handleClose} style={{ width: '50vw', margin: 'auto' }}>
                 <DialogTitle style={{ width: '30vw', margin: 'auto' }}>Post Query</DialogTitle>
+                <Box
+                component='form'
+                noValidate
+                onSubmit={checkPostQuery}>
                 <DialogContent  >
                     <DialogContentText >
                         Write your any type of Query here :
@@ -86,6 +94,7 @@ const Query = () => {
                         fullWidth
                         multiline
                         rows={4}
+                        name='createQuery'
                         style={{ margin: '10px 0' }}
                         onChange={handleQueryMessage}
 
@@ -93,8 +102,9 @@ const Query = () => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={checkPost} variant='contained' >Post</Button>
+                    <Button type='submit' variant='contained' >Post</Button>
                 </DialogActions>
+                </Box>
             </Dialog>
             <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Typography variant='h4' color='primary' sx={{ height: '5rem', padding: '20px', display: 'flex', alignItems: 'center' }}> Having Queries and Doubts ???? Post here</Typography>

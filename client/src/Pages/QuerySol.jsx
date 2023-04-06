@@ -14,7 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSpecificQuery } from '../Redux/features/query/queriesSlice';
+import { crtQuerySolution, getSpecificQuery} from '../Redux/features/query/queriesSlice';
 
 
 
@@ -26,19 +26,13 @@ const QuerySol = () => {
     const dispatch =useDispatch()
 
     const {getQuery}=useSelector((state)=>state.queries)
-    console.log(getQuery.querySolution)
-    // const [solutions, setSolutions]=useState([]);
-    // console.log(solutions)
     
    useEffect(()=>{
      dispatch(getSpecificQuery(id));
-    //  setSolutions(getQuery.querySolution)
    }, [])
 
     const [open, setOpen] = React.useState(false);
     const [dopen, setdopen] = React.useState(false);
-    // const [querySolution,setquerySolution]=React.useState("");
-    // console.log(querySolution);
 
 
     const handleDelete = () => {
@@ -57,14 +51,27 @@ const QuerySol = () => {
         setOpen(false);
     };
 
-    const handleQuerySolution=(e)=>{
-        // setquerySolution(e.target.value);
+    
+    const handleQuerySolution=(event)=>{
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const querySolutionText = data.get("querySolution");
+        const d={
+            id:id,
+            querySolutionText:querySolutionText
+        }
+        dispatch(crtQuerySolution(d));
+        setOpen(false);
     }
     return (
         <div>
 
             <Dialog open={open} onClose={handleClose} style={{ width: '50vw', margin: 'auto' }}>
                 <DialogTitle style={{ width: '30vw', margin: 'auto' }}>Post Solution</DialogTitle>
+                <Box 
+                component={'form'}
+                noValidate
+                onSubmit={handleQuerySolution}>
                 <DialogContent  >
                     <DialogContentText >
                         Write your Solution regarding Query :
@@ -75,16 +82,17 @@ const QuerySol = () => {
                         fullWidth
                         multiline
                         rows={4}
-                        
+                        name='querySolution'
                         style={{ margin: '10px 0' }}
-                        onChange={handleQuerySolution}
+                        // onChange={handleQuerySolution}
 
                     />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
-                    <Button variant='contained' >Post</Button>
+                    <Button variant='contained' type='submit'>Post</Button>
                 </DialogActions>
+                </Box>
             </Dialog>
             <Paper elevation={3} style={{ backgroundColor: '#d8d8d8', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
                 <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
@@ -140,7 +148,7 @@ const QuerySol = () => {
         </Box>
         <Box>
 
-        {new Date(element.updatedAt).toLocaleString()}
+        {new Date(element.date).toLocaleString()}
 
 
         </Box>
