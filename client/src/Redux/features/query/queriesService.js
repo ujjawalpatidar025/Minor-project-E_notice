@@ -29,17 +29,17 @@ const crtQuery =async(data)=>{
 
 
 
-// const deleteMessage=async(id)=>{
-//     const response=await axios.put(`/delMessages/${id}`)
-//     console.log(response.data);
-//     return response.data;
-// }
+const deleteQuery=async(id)=>{
+    const response=await axios.put(`/delQuery/${id}`)
+    return response.data;
+}
 
 const queriesService = {
     getAllQueries,
     getSpecificQuery,
     crtQuerySolution,
-    crtQuery
+    crtQuery,
+    deleteQuery
 }
 
 export default queriesService

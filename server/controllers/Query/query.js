@@ -6,6 +6,7 @@ import { Query } from "../../models/Query.js";
 export const createquery = async (req, res, next) => {
     try {
         const query = req.body.query;
+        if(!query)return  next(createError(404, "Please fill the necessary fields"))
        const newQuery = new Query({ ...req.body });
         const saveQuery = await newQuery.save();
         if (saveQuery)
@@ -43,7 +44,7 @@ export const createquerysolution = async (req, res, next) => {
     try {
         const id=req.params.id;
         const message=req.body.querySolutionText
-        // if (!message.solution) next(createError(404, "Please fill all the necessary details!"));
+        if (!message) return next(createError(404, "Please fill all the necessary details!"));
 
        const updatesolution=await Query.updateOne(
         {
@@ -64,6 +65,18 @@ export const createquerysolution = async (req, res, next) => {
                 message: "Query solution posted Successfully"
             })
     } catch (error) {
+        next(error);
+    }
+}
+
+
+export const deleteQuery = async(req, res, next)=>{
+    try{
+       const delId=req.params.id;
+       await Query.findByIdAndDelete(delId);
+       res.status(200).json("Query Deleted!");
+
+    }catch(error){
         next(error);
     }
 }
