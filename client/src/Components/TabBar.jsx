@@ -89,11 +89,12 @@ export default function TabBar() {
 
   return (
     <>
-      <Box sx={{ width: "100vw" }}>
+      <Box sx={{ width: "100%" }}>
         <Tabs
           value={value}
           style={{
-            width: "100vw",
+            position:'relative',
+            width: "100%",
             backgroundColor: "#d0cece",
             boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             display: "flex",
@@ -104,13 +105,13 @@ export default function TabBar() {
           indicatorColor="primary"
           aria-label="secondary tabs example"
         >
-          <Tab value="General" label="General" sx={{ width: "20vw" }} />
-          <Tab value="Academic" label="Academic" sx={{ width: "20vw" }} />
-          <Tab value="Social" label="Social" sx={{ width: "20vw" }} />
-          <Tab value="Community" label="Community" sx={{ width: "20vw" }} />
-          <Tab value="Spam" label="Spam" sx={{ width: "20vw" }} />
+          <Tab value="General" label="General" sx={{ flex: "1" }} />
+          <Tab value="Academic" label="Academic" sx={{ flex: "1" }} />
+          <Tab value="Social" label="Social" sx={{ flex: "1" }} />
+          <Tab value="Community" label="Community" sx={{ flex: "1" }} />
+          <Tab value="Spam" label="Spam" sx={{ flex: "1" }} />
         </Tabs>
-        <Box style={{ height: "28rem", width: "100vw", overflow: "auto" }}>
+        <Box style={{  width: "100%"}}>
           {Object.values(noticeMessages)
             .filter((message) => message.category === value)
             .map((filteredMessage) => (

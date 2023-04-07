@@ -25,7 +25,8 @@ const Accord = {
 };
 
 const AccordSum = {
-    backgroundColor: '#cecbcbb3'
+    backgroundColor: '#cecbcbb3',
+    width:'100%'
 
 }
 
@@ -67,32 +68,39 @@ export default function AccordianBox(props) {
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
+                    sx={
+                        {
+                            display:"flex",
+                            width:'100%',
+                        }
+                    }
 
 
                 >
-                    <Typography sx={{ flexShrink: 0, fontWeight: 'bolder', fontSize: '1.2rem', margin: '0 20px', width: '15vw', textAlign: 'center' }}>
+                    {/* width: '15vw'  width: '25vw' width: '35vw' width: '15vw'*/}
+                    <Typography sx={{ flexShrink: 0, fontWeight: 'bolder', fontSize: '1.2rem', padding: '0 20px', flex:1, textAlign: 'center' }}>
                         {props.heading}
                     </Typography>
-                    <Typography sx={{ color: 'text.secondary', margin: ' 0 20px', color: '#211f1f', width: '25vw', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'center' }}> {props.subHeading} </Typography>
-                    <Typography sx={{ color: 'text.secondary', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', width: '35vw', textAlign: 'center', margin: '0 20px' }}> {props.message} </Typography>
-                    <Typography sx={{ color: 'text.secondary', textAlign: 'right', width: '10vw' }}>{new Date(props.updatedAt).toLocaleDateString()}</Typography>
+                    <Typography sx={{ color: 'text.secondary', padding: ' 0 20px', color: '#211f1f', flex:2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', textAlign: 'center' }}> {props.subHeading} </Typography>
+                    <Typography sx={{ color: 'text.secondary', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex:'3', textAlign: 'center', padding: '0 20px' }}> {props.message} </Typography>
+                    <Typography sx={{ color: 'text.secondary', textAlign: 'right',  flex:1}}>{new Date(props.updatedAt).toLocaleString()}</Typography>
 
                 </AccordionSummary>
                 <AccordionDetails style={AccordSum}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width:'100%'}}>
                         <Box>
-                            <Typography variant='h5' sx={{ margin: '10px' }}>
+                            <Typography variant='h5' sx={{ padding: '10px' }}>
                                 {props.title}
                             </Typography>
-                            <Typography sx={{ margin: '10px' }} >
+                            <Typography sx={{ padding: '10px' }} >
                                 {props.subHeading}
                             </Typography>
-                            <Typography sx={{ margin: '0 10px' }}>
+                            <Typography sx={{ padding: '0 10px' }}>
                                 {props.message}
                             </Typography>
 
                         </Box>
-                        {user.admin&&<Box>
+                        {user.admin&&<Box >
                             <IconButton sx={{ color: "black" }}>
 
                                 <DeleteIcon onClick={handleClickOpen} />
