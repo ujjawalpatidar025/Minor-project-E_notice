@@ -6,13 +6,8 @@ import { Query } from "../../models/Query.js";
 export const createquery = async (req, res, next) => {
     try {
         const query = req.body.query;
-       
-        
-
-        const newQuery = new Query({ ...req.body });
-       
+       const newQuery = new Query({ ...req.body });
         const saveQuery = await newQuery.save();
-        
         if (saveQuery)
             res.status(200).json({
                 success: true,
@@ -33,12 +28,21 @@ export const getquery = async (req, res, next) => {
         next(error);
     }
 }
+export const getSpecificQuery=async (req, res, next) => {
+    try {
+        const {id}=req.params
+        const query = await Query.findById(id);
+        res.status(200).json(query);
+
+    } catch (error) {
+        next(error);
+    }
+}
 
 export const createquerysolution = async (req, res, next) => {
     try {
-        const id=req.body._id;
-        const message=req.body.solution
-        
+        const id=req.params.id;
+        const message=req.body.querySolutionText
         // if (!message.solution) next(createError(404, "Please fill all the necessary details!"));
 
        const updatesolution=await Query.updateOne(
@@ -48,7 +52,8 @@ export const createquerysolution = async (req, res, next) => {
         {
             $push:{
                 querySolution:{
-                    solution:message
+                    solution:message,
+                    date: new Date()
                 }
             }
         }

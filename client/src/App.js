@@ -13,7 +13,6 @@ import QuerySol from "./Pages/QuerySol";
 
 
 function App() {
-  
   return (
     <div className="App">
       <Routes>
@@ -26,7 +25,7 @@ function App() {
           <Route path="/iip" element={<IIP />} />
           <Route path="/iimr" element={<IIMR />} />
           <Route path="/query" element={<Query />} />
-          <Route path="/querySol" element={<QuerySol />} />
+          <Route path="/querySol/:id" element={<QuerySol />} />
         </Route>
       </Routes>
     </div>

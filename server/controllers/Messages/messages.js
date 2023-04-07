@@ -19,10 +19,10 @@ export const createmessages = async (req, res, next)=>{
 export const getmessages = async(req, res, next)=>{
     try{
        if(req.params.institute==="ALL"){
-        const allMessages= await Message.find();
+        const allMessages= await Message.find().sort({updatedAt:-1});
         res.status(200).json(allMessages);
        }else{
-        const allMessages= await Message.find({institute: req.params.institute});
+        const allMessages= await Message.find({institute: req.params.institute}).sort({updatedAt:-1});
         res.status(200).json(allMessages);
        }
     }catch(error){
