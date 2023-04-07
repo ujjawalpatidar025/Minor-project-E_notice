@@ -17,13 +17,11 @@ const ProtectedRoute = () => {
             setTimeout(() => {
               isVerify && setShowLoading(false);
             }, 2000);
-            console.log(isVerify.data)
             if(!verify.data && (window.location.pathname==='/' )) navigate('/home');
         }catch(error){
           setShowLoading(false)
             navigate('/');
             localStorage.clear();
-          console.log(error.message);
         }
       }
       verify();
