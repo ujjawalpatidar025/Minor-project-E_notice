@@ -6,13 +6,13 @@ import { Query } from "../../models/Query.js";
 export const createquery = async (req, res, next) => {
     try {
         const query = req.body.query;
-        console.log(query);
+       
         
 
         const newQuery = new Query({ ...req.body });
-        console.log(newQuery);
+       
         const saveQuery = await newQuery.save();
-        console.log(saveQuery);
+        
         if (saveQuery)
             res.status(200).json({
                 success: true,
@@ -57,6 +57,30 @@ export const createquerysolution = async (req, res, next) => {
             res.status(200).json({
                 success: true,
                 message: "Query solution posted Successfully"
+            })
+    } catch (error) {
+        next(error);
+    }
+}
+
+
+
+
+
+export const dltquery = async (req, res, next) => {
+    try {
+        const id=req.body._id;
+        
+        
+        // if (!message.solution) next(createError(404, "Please fill all the necessary details!"));
+
+       const dltquery= await Query.deleteOne({
+        _id:id
+       })
+        if (dltquery)
+            res.status(200).json({
+                success: true,
+                message: "Query deleted Successfully"
             })
     } catch (error) {
         next(error);

@@ -99,9 +99,14 @@ export default function CrtMessage() {
             axios.defaults.withCredentials=true;
             // console.log(createMessage);
             const response=await axios.post('/crtMessages', createMessage);
-            navigate('/home');
+           
             setSuccessMessage(JSON.stringify((response.data)));
-            alert(JSON.stringify((response.data)));
+            setOpen(true);
+        
+
+
+            //navigate('/home');
+            //alert(JSON.stringify((response.data)));
             // console.log(`${JSON.stringify((response.data))}`);
         }catch(error){
             setSuccessMessage(error.response.data.message);
@@ -111,9 +116,9 @@ export default function CrtMessage() {
 
     return (
         <ThemeProvider theme={theme}>
-            {alert&&<Snackbar open={open} autoHideDuration={3000}  onClose={handleClose}  >
+            {<Snackbar open={open} autoHideDuration={3000}  onClose={handleClose}  >
         <Alert onClose={handleClose} variant="filled"  severity="success" sx={{ width: '100%' ,color:'white'}}>
-          This is a success message!
+         {successMessage}
         </Alert>
       </Snackbar>}
             <Container component="main" maxWidth="sm">
