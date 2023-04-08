@@ -10,6 +10,7 @@ import getquery from './routes/Query/getQuery.js'
 import crtquerysolution from './routes/Query/createsolution.js'
 import delquery from './routes/Query/dltquery.js'
 import deleteMessages from './routes/Messages/deleteMessages.js';
+import deleteQuery from './routes/Query/deleteQuery.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import { verifyToken } from "./verifyToken.js";
@@ -47,6 +48,7 @@ app.use('/crtMessages', createMessages);
 app.use('/getMessages', getMessages);
 app.use('/crtquery', crtquery);
 app.use('/getquery', getquery);
+app.use('/delquery', deleteQuery);
 app.use('/crtquerysolution', crtquerysolution);
 app.use('/delquery',delquery);
 app.use('/delMessages', deleteMessages);

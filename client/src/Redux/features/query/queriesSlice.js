@@ -147,17 +147,18 @@ export const crtQuery =createAsyncThunk('/crtquery/' , async(data, thunkAPI)=>{
 
 })
 
-// export const deleteMessages = createAsyncThunk('/deleteMessages' , async(id, thunkAPI)=>{
 
-//     try {
-//         return await messageService.deleteMessage(id)
+export const deleteQuery = createAsyncThunk('/deleteQuery' , async(id, thunkAPI)=>{
+
+    try {
+        return await queriesService.deleteQuery(id)
         
-//     } catch (error) {
-//         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-//         return thunkAPI.rejectWithValue(message) 
-//     }
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message) 
+    }
 
-// })
+})
 
 
 
