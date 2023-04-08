@@ -22,14 +22,17 @@ import { crtQuery, getQueries } from '../Redux/features/query/queriesSlice';
 const Query = () => {
 
     const dispatch = useDispatch();
-    const { allQueries } = useSelector((state) => state.queries)
-    console.log(allQueries)
+    
+    
+    const { allQueries } = useSelector((state) => state.queries);
+
+    
     useEffect(() => {
         dispatch(getQueries());
     }, [])
 
 
-    const Query = () => {
+    
         const navigate = useNavigate();
         const [open, setOpen] = React.useState(false);
         const [dopen, setdopen] = React.useState(false);
@@ -62,6 +65,7 @@ const Query = () => {
             dispatch(crtQuery(queryText));
             setpost(true);
             setOpen(false);
+            navigate("/query");
 
         }
 
@@ -82,14 +86,7 @@ const Query = () => {
             setquery(e.target.value);
         }
 
-        useEffect(() => {
-            console.log("hello");
-            axios.get("http://localhost:4000/getquery/").then((res) => {
-
-                setallQuery(res.data.reverse());
-            })
-
-        }, [post])
+        
 
 
 
@@ -134,6 +131,7 @@ const Query = () => {
                         </DialogActions>
                     </Box>
                 </Dialog>
+                
                 <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <Typography variant='h4' color='primary' sx={{ height: '5rem', padding: '20px', display: 'flex', alignItems: 'center' }}> Having Queries and Doubts ???? Post here</Typography>
                     <AddCircleIcon fontSize='large' onClick={handleClickOpen} color='primary' style={{ padding: '0 20px ', cursor: 'pointer' }} />
@@ -146,7 +144,8 @@ const Query = () => {
                 <Paper style={{ height: '73vh', width: '100vw', margin: 'auto', backgroundColor: '#c2c2c270', overflow: 'auto' }}>
                     {
                         Object.values(allQueries).map((item) => {
-                            return 
+                            return (
+                            
                             <Paper elevation={3} style={{ backgroundColor: '#c0bfbf', minHeight: '7rem', height: 'auto', width: '95vw', margin: ' 10px auto' }}>
                                 <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '10px 20px' }}>
                                     <Box style={{ display: 'flex', justifyContent: 'left', alignItems: 'center' }}>
@@ -192,6 +191,7 @@ const Query = () => {
                                 </Box>
 
                             </Paper>
+                            )
                         })
                     }
 
@@ -200,7 +200,7 @@ const Query = () => {
                 </Paper>
             </div>
         )
-    }
+    
 }
 
     export default Query
