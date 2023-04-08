@@ -207,8 +207,8 @@ const Query = () => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button type="submit" variant="contained">
+            <Button onClick={handleClose} sx={{color:"rgb(33 109 48)"}}>Cancel</Button>
+            <Button type="submit" variant="contained" sx={{backgroundColor:"rgb(33 109 48)", '&:hover':{backgroundColor:"rgb(33 109 48)"}}}>
               Post
             </Button>
           </DialogActions>

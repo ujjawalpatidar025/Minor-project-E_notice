@@ -117,7 +117,7 @@ export default function TabBar() {
           <Tab value="Spam" label="Spam" sx={{ flex: "1"}} />
         </Tabs>
         </Paper>
-        <Box style={{  width: "100%",height:'29.4rem', overflowY:'auto'}}>
+        <Box style={{  width: "100%",height:'29.4rem', overflowY:'auto', marginTop:"20px"}}>
           {Object.values(noticeMessages)
             .filter((message) => message.category === value)
             .map((filteredMessage) => (

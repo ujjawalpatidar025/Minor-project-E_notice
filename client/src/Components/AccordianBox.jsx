@@ -21,7 +21,7 @@ import {useNavigate} from 'react-router-dom';
 const Accord = {
     backgroundColor: 'transparent',
     margin:'20px 10px',
-    //border:'2px solid #3b7bc6',
+    // border:'2px solid #3b7bc6',
     width: 'inherit',
    
     backgroundColor:'white',

@@ -80,7 +80,7 @@ function Navbar() {
             variant="h6"
             noWrap
             component="a"
-            href="/home"
+           
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -91,7 +91,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+           <Link to='/home' style={{textDecoration:'none',color:'black'}}>LOGO</Link> 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -135,7 +135,7 @@ function Navbar() {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -147,7 +147,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <Link to='/home' style={{textDecoration:'none',color:'black'}}>LOGO</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (

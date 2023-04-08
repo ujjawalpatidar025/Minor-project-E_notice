@@ -92,8 +92,8 @@ const QuerySol = () => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button variant="contained" type="submit">
+            <Button onClick={handleClose} sx={{color:"rgb(33 109 48)"}}>Cancel</Button>
+            <Button variant="contained" type="submit" sx={{backgroundColor:"rgb(33 109 48)", '&:hover':{backgroundColor:"rgb(33 109 48)"}}}>
               Post
             </Button>
           </DialogActions>
@@ -143,8 +143,8 @@ const QuerySol = () => {
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleDeleteClose}>Cancel</Button>
-                <Button onClick={handleDeleteClose} variant="contained">
+                <Button onClick={handleDeleteClose} sx={{color:"rgb(33 109 48)"}}>Cancel</Button>
+                <Button onClick={handleDeleteClose} variant="contained" sx={{backgroundColor:"rgb(33 109 48)", '&:hover':{backgroundColor:"rgb(33 109 48)"}}}>
                   Delete
                 </Button>
               </DialogActions>

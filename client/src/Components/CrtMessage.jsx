@@ -133,7 +133,7 @@ export default function CrtMessage() {
                         alignItems: 'center',
                     }}
                 >
-                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                    <Avatar sx={{ m: 1, bgcolor: 'rgb(33 109 48)' }}>
                     <RateReviewIcon/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
@@ -253,7 +253,7 @@ export default function CrtMessage() {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{ mt: 3, mb: 2 , backgroundColor:"rgb(33 109 48)"}}
                         >
                             Post Message
                         </Button>
