@@ -14,7 +14,7 @@ import QuerySol from "./Pages/QuerySol";
 
 function App() {
   return (
-    <div className="App" style={{padding:'0 30px'}}>
+    <div className="App" style={{width:"100vw"}}>
       <Routes>
         <Route path="/" element={<ProtectedRoute />}>
           <Route index element={<LoginPage />} />

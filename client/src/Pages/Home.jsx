@@ -18,10 +18,10 @@ const Home = () => {
   
 
   return (
-    <div style={{width:'100%'}}>
+    <div style={{padding:'0 30px'}}>
   
 
-      <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' ,display: 'flex', alignItems: 'center'}}> All Messages</Typography>
+      <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' ,display: 'flex', alignItems: 'center', color:"rgb(33 109 48)"}}> All Messages</Typography>
       <TabBar/>
       
 

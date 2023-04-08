@@ -92,8 +92,8 @@ const QuerySol = () => {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose}>Cancel</Button>
-            <Button variant="contained" type="submit">
+            <Button onClick={handleClose} sx={{color:"rgb(33 109 48)"}}>Cancel</Button>
+            <Button variant="contained" type="submit" sx={{backgroundColor:"rgb(33 109 48)", '&:hover':{backgroundColor:"rgb(33 109 48)"}}}>
               Post
             </Button>
           </DialogActions>
@@ -102,11 +102,12 @@ const QuerySol = () => {
       <Paper
         elevation={3}
         style={{
-          backgroundColor: "#d8d8d8",
+          // backgroundColor: "#d8d8d8",
           minHeight: "7rem",
           height: "auto",
           width: "95vw",
           margin: " 10px auto",
+          backgroundColor:"#F5F5F5",
         }}
       >
         <Box
@@ -115,6 +116,7 @@ const QuerySol = () => {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "10px 20px",
+            
           }}
         >
           <Box
@@ -141,14 +143,14 @@ const QuerySol = () => {
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleDeleteClose}>Cancel</Button>
-                <Button onClick={handleDeleteClose} variant="contained">
+                <Button onClick={handleDeleteClose} sx={{color:"rgb(33 109 48)"}}>Cancel</Button>
+                <Button onClick={handleDeleteClose} variant="contained" sx={{backgroundColor:"rgb(33 109 48)", '&:hover':{backgroundColor:"rgb(33 109 48)"}}}>
                   Delete
                 </Button>
               </DialogActions>
             </Dialog>
           </Box>
-          <Box>7-March-2023</Box>
+          <Box>{new Date(getQuery.updatedAt).toLocaleString()}</Box>
         </Box>
         <Box
           style={{
@@ -158,7 +160,7 @@ const QuerySol = () => {
           }}
         >
           <Typography p={2}>
-           {getQuery.query};
+           {getQuery.query}
           </Typography>
         </Box>
       </Paper>
@@ -182,12 +184,13 @@ const QuerySol = () => {
           <Typography
             variant="h4"
             marginLeft={2}
-            color="primary"
+          
             sx={{
               height: "5rem",
               padding: "20px",
               display: "flex",
               alignItems: "center",
+              color:"rgb(33 109 48)"
             }}
           >
             {" "}
@@ -197,7 +200,7 @@ const QuerySol = () => {
             fontSize="large"
             onClick={handleClickOpen}
             color="primary"
-            style={{ padding: "0 20px ", cursor: "pointer" }}
+            style={{ padding: "0 20px ", cursor: "pointer",color:"rgb(33 109 48)" }}
           />
         </Box>
        
@@ -210,7 +213,8 @@ const QuerySol = () => {
               <Paper
                 elevation={3}
                 style={{
-                  backgroundColor: "#c9d5e8",
+                  // backgroundColor: "#c9d5e8",
+                  backgroundColor:"#F5F5F5",
                   minHeight: "7rem",
                   height: "auto",
                   width: "95vw",

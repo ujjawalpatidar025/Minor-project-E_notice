@@ -50,7 +50,7 @@ app.use('/crtquery', crtquery);
 app.use('/getquery', getquery);
 app.use('/delquery', deleteQuery);
 app.use('/crtquerysolution', crtquerysolution);
-app.use('/delquery',delquery);
+// app.use('/delquery',delquery);
 app.use('/delMessages', deleteMessages);
 app.get("/verifyToken", verifyToken);
 
