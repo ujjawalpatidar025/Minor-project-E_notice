@@ -24,7 +24,7 @@ const IIST = () => {
     <div>
   
 
-      <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' ,display: 'flex', alignItems: 'center'}}> IIST Messages</Typography>
+      <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' ,display: 'flex', alignItems: 'center',color:"rgb(33 109 48)"}}> IIST Messages</Typography>
       <TabBar/>
       
 

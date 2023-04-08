@@ -39,7 +39,8 @@ const ElementQuery = (item) => {
     <Paper
       elevation={3}
       style={{
-        backgroundColor:'#c9d5e8',
+        // backgroundColor:'#c9d5e8',
+        backgroundColor:"#F5F5F5",
         minHeight: "7rem",
         height: "auto",
         width: "93vw",
@@ -223,7 +224,7 @@ const Query = () => {
       >
         <Typography
           variant="h4"
-          color="primary"
+          color="rgb(33 109 48)"
           sx={{
             height: "5rem",
             padding: "20px",
@@ -237,8 +238,7 @@ const Query = () => {
         <AddCircleIcon
           fontSize="large"
           onClick={handleClickOpen}
-          color="primary"
-          style={{ padding: "0 20px ", cursor: "pointer" }}
+          style={{ padding: "0 20px ", cursor: "pointer",color:"rgb(33 109 48)" }}
         />
       </Box>
 

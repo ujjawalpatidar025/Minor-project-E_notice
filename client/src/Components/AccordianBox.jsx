@@ -24,12 +24,12 @@ const Accord = {
     //border:'2px solid #3b7bc6',
     width: 'inherit',
    
-    backgroundColor:'#c9d5e8',
+    backgroundColor:'white',
     borderRadius:'15px'
 };
 
 const AccordSum = {
-    backgroundColor: '#dee5eb',
+    backgroundColor: '#F5F5F5',
     borderRadius:'15px'
    
 }

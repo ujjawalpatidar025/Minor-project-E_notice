@@ -90,7 +90,7 @@ export default function TabBar() {
   return (
     <>
       <Box sx={{ width: "100%" }}>
-        <Paper elevation={4}sx={{backgroundColor:'#bab9b966'}}>
+        <Paper elevation={4}sx={{backgroundColor:'#F5F5F5'}}>
 
         
         <Tabs
@@ -98,26 +98,23 @@ export default function TabBar() {
           style={{
             position:'relative',
             width: "100%",
-
             color:'green',
-            // backgroundColor: "#d0cece",
-            // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-            //border:'2px solid yellow',
             display: "flex",
-           
-           
             justifyContent: "space-around",
           }}
           onChange={handleChange}
-          textColor="primary"
-          indicatorColor="primary"
+          textColor="rgb(33 109 48)"
           aria-label="secondary tabs example"
+          TabIndicatorProps={{
+            style: {
+              backgroundColor: "rgb(33 109 48)",
+            }}}
         >
-          <Tab value="General" label="General" sx={{ flex: "1" }} />
-          <Tab value="Academic" label="Academic" sx={{ flex: "1" }} />
+          <Tab value="General" label="General" sx={{ flex: "1"}} />
+          <Tab value="Academic" label="Academic" sx={{ flex: "1"}}/>
           <Tab value="Social" label="Social" sx={{ flex: "1" }} />
-          <Tab value="Community" label="Community" sx={{ flex: "1" }} />
-          <Tab value="Spam" label="Spam" sx={{ flex: "1" }} />
+          <Tab value="Community" label="Community" sx={{ flex: "1"}} />
+          <Tab value="Spam" label="Spam" sx={{ flex: "1"}} />
         </Tabs>
         </Paper>
         <Box style={{  width: "100%",height:'29.4rem', overflowY:'auto'}}>

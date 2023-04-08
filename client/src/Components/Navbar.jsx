@@ -25,9 +25,11 @@ import {logout} from '../Redux/features/auth/authSlice'
 const pages = ['IIST', 'IIP', 'IIMR'];
 
 const Nav={
-    backgroundColor:'transparent',
+    backgroundColor:'#F5F5F5',
     color:'black',
     boxShadow:'none',
+  borderRadius: '2px',
+  boxShadow: '0px 1px 10px #999',
    
 }
 
@@ -70,7 +72,7 @@ function Navbar() {
 
 
   return (
-    <AppBar position="static" top='0'  sx={Nav}>
+    <AppBar position="sticky" top='0'  sx={Nav} >
       <Container maxWidth="xl" sx={{color:'black'}}>
         <Toolbar disableGutters sx={{color:'black'}}>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -160,7 +162,7 @@ function Navbar() {
             ))}
             {user.admin&&
             <Box style={{width:'5rem',display:'flex',justifyContent:'center',alignItems:'center'}}>
-            <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto'}}/>
+            <Link to="/create" style={{textDecoration:'none'}}><RateReviewIcon sx={{fontSize:'2rem',display:'flex',justifyContent:'center',alignItems:'center',height:'inherit',margin:'auto', color:"rgb(33 109 48)"}}/>
             </Link>
             </Box>
             }
@@ -180,7 +182,7 @@ function Navbar() {
           
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-             < AccountCircleTwoToneIcon sx={{fontSize:'2rem'}}/>
+             < AccountCircleTwoToneIcon sx={{fontSize:'2rem', color:"black"}}/>
               </IconButton>
             </Tooltip>
            
