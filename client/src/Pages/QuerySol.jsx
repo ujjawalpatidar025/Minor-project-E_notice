@@ -19,11 +19,15 @@ import {
   getSpecificQuery,
 } from "../Redux/features/query/queriesSlice";
 
+
 const QuerySol = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const { getQuery } = useSelector((state) => state.queries);
+  // const c=useSelector((state) => state.queries);
+
+  // console.log(c);
 
   useEffect(() => {
     dispatch(getSpecificQuery(id));
@@ -122,10 +126,7 @@ const QuerySol = () => {
           >
             <AccountCircleIcon />
             <Typography marginX={2}>Anonymous</Typography>
-            <IconButton onClick={handleDelete}>
-              {" "}
-              <DeleteIcon fontSize="medium" style={{ color: "black" }} />
-            </IconButton>
+           
             <Dialog
               open={dopen}
               onClose={handleDeleteClose}
@@ -157,20 +158,18 @@ const QuerySol = () => {
           }}
         >
           <Typography p={2}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-            cupiditate autem hic, tenetur, cumque quaerat ad incidunt illo
-            recusandae, eos aliquam blanditiis doloremque?
+           {getQuery.query};
           </Typography>
         </Box>
       </Paper>
 
-      <Paper
+      <Box
         style={{
           height: "70vh",
-          width: "100vw",
+          width: "inherit",
           margin: "auto",
-          backgroundColor: "#c2c2c270",
-          overflow: "auto",
+         // backgroundColor: "#c2c2c270",
+         
         }}
       >
         <Box
@@ -201,6 +200,9 @@ const QuerySol = () => {
             style={{ padding: "0 20px ", cursor: "pointer" }}
           />
         </Box>
+       
+
+        <Box sx={{height:'23rem', overflow: "auto",}}>
 
         {getQuery.querySolution &&
           getQuery.querySolution.map((element) => {
@@ -208,7 +210,7 @@ const QuerySol = () => {
               <Paper
                 elevation={3}
                 style={{
-                  backgroundColor: "#eceaea",
+                  backgroundColor: "#c9d5e8",
                   minHeight: "7rem",
                   height: "auto",
                   width: "95vw",
@@ -247,7 +249,8 @@ const QuerySol = () => {
               </Paper>
             );
           })}
-      </Paper>
+        </Box>
+      </Box>
     </div>
   );
 };

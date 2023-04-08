@@ -70,27 +70,6 @@ export const createquerysolution = async (req, res, next) => {
 }
 
 
-<<<<<<< HEAD
-
-
-
-export const dltquery = async (req, res, next) => {
-    try {
-        const id=req.body._id;
-        
-        
-        // if (!message.solution) next(createError(404, "Please fill all the necessary details!"));
-
-       const dltquery= await Query.deleteOne({
-        _id:id
-       })
-        if (dltquery)
-            res.status(200).json({
-                success: true,
-                message: "Query deleted Successfully"
-            })
-    } catch (error) {
-=======
 export const deleteQuery = async(req, res, next)=>{
     try{
        const delId=req.params.id;
@@ -98,7 +77,6 @@ export const deleteQuery = async(req, res, next)=>{
        res.status(200).json("Query Deleted!");
 
     }catch(error){
->>>>>>> 2e24bdf5a5c36d3449cd3bc4f6df863e2544d8c3
         next(error);
     }
 }

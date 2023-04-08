@@ -115,13 +115,15 @@ export default function CrtMessage() {
     };
 
     return (
-        <ThemeProvider theme={theme}>
+       <Box >
+
+        <ThemeProvider theme={theme} >
             {<Snackbar open={open} autoHideDuration={3000}  onClose={handleClose}  >
         <Alert onClose={handleClose} variant="filled"  severity="success" sx={{ width: '100%' ,color:'white'}}>
          {successMessage}
         </Alert>
       </Snackbar>}
-            <Container component="main" maxWidth="sm">
+            <Container component="main" maxWidth="sm" >
                 <CssBaseline />
                 <Box
                     sx={{
@@ -261,5 +263,6 @@ export default function CrtMessage() {
                 
             </Container>
         </ThemeProvider>
+        </Box>
     );
 }

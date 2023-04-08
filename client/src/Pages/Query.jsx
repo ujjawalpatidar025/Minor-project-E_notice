@@ -39,11 +39,11 @@ const ElementQuery = (item) => {
     <Paper
       elevation={3}
       style={{
-        backgroundColor: "#c0bfbf",
+        backgroundColor:'#c9d5e8',
         minHeight: "7rem",
         height: "auto",
-        width: "95vw",
-        margin: " 10px auto",
+        width: "93vw",
+        margin: " 20px auto",
       }}
     >
       <Box
@@ -218,6 +218,7 @@ const Query = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          width:'inherit'
         }}
       >
         <Typography
@@ -241,19 +242,19 @@ const Query = () => {
         />
       </Box>
 
-      <Paper
+      <Box
         style={{
           height: "73vh",
-          width: "100vw",
+          width: "inherit",
           margin: "auto",
-          backgroundColor: "#c2c2c270",
+         // backgroundColor: "#c2c2c270",
           overflow: "auto",
         }}
       >
         {Object.values(allQueries).map((item, index) => {
           return <ElementQuery {...item} key={index}/>;
         })}
-      </Paper>
+      </Box>
     </div>
   );
 };

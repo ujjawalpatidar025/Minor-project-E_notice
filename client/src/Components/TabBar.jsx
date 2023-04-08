@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import AccordianBox from "./AccordianBox";
-import { Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 export default function TabBar() {
@@ -90,14 +90,22 @@ export default function TabBar() {
   return (
     <>
       <Box sx={{ width: "100%" }}>
+        <Paper elevation={4}sx={{backgroundColor:'#bab9b966'}}>
+
+        
         <Tabs
           value={value}
           style={{
             position:'relative',
             width: "100%",
-            backgroundColor: "#d0cece",
-            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+
+            color:'green',
+            // backgroundColor: "#d0cece",
+            // boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            //border:'2px solid yellow',
             display: "flex",
+           
+           
             justifyContent: "space-around",
           }}
           onChange={handleChange}
@@ -111,7 +119,8 @@ export default function TabBar() {
           <Tab value="Community" label="Community" sx={{ flex: "1" }} />
           <Tab value="Spam" label="Spam" sx={{ flex: "1" }} />
         </Tabs>
-        <Box style={{  width: "100%"}}>
+        </Paper>
+        <Box style={{  width: "100%",height:'29.4rem', overflowY:'auto'}}>
           {Object.values(noticeMessages)
             .filter((message) => message.category === value)
             .map((filteredMessage) => (

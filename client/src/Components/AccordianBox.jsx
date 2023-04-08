@@ -20,14 +20,18 @@ import {useNavigate} from 'react-router-dom';
 
 const Accord = {
     backgroundColor: 'transparent',
-    width: '100%',
-
+    margin:'20px 10px',
+    //border:'2px solid #3b7bc6',
+    width: 'inherit',
+   
+    backgroundColor:'#c9d5e8',
+    borderRadius:'15px'
 };
 
 const AccordSum = {
-    backgroundColor: '#cecbcbb3',
-    width:'100%'
-
+    backgroundColor: '#dee5eb',
+    borderRadius:'15px'
+   
 }
 
 export default function AccordianBox(props) {
@@ -71,7 +75,7 @@ export default function AccordianBox(props) {
                     sx={
                         {
                             display:"flex",
-                            width:'100%',
+                            width:'inherit',
                         }
                     }
 
@@ -87,7 +91,7 @@ export default function AccordianBox(props) {
 
                 </AccordionSummary>
                 <AccordionDetails style={AccordSum}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width:'100%'}}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
                         <Box>
                             <Typography variant='h5' sx={{ padding: '10px' }}>
                                 {props.title}
