@@ -22,7 +22,7 @@ export const createquery = async (req, res, next) => {
 export const getquery = async (req, res, next) => {
     try {
 
-        const allQueries = await Query.find();
+        const allQueries = await Query.find().sort({updatedAt:-1});
         res.status(200).json(allQueries);
 
     } catch (error) {

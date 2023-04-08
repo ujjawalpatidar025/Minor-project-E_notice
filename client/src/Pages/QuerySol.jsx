@@ -150,7 +150,7 @@ const QuerySol = () => {
               </DialogActions>
             </Dialog>
           </Box>
-          <Box>7-March-2023</Box>
+          <Box>{new Date(getQuery.updatedAt).toLocaleString()}</Box>
         </Box>
         <Box
           style={{
@@ -160,7 +160,7 @@ const QuerySol = () => {
           }}
         >
           <Typography p={2}>
-           {getQuery.query};
+           {getQuery.query}
           </Typography>
         </Box>
       </Paper>
