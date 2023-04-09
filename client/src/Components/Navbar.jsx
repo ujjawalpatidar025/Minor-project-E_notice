@@ -16,10 +16,11 @@ import RateReviewIcon from '@mui/icons-material/RateReview';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import { useState } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, Outlet} from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector} from 'react-redux';
 import {logout} from '../Redux/features/auth/authSlice'
+import { getMessages } from '../Redux/features/messages/messagesSlice';
 
 
 const pages = ['IIST', 'IIP', 'IIMR'];
@@ -57,7 +58,7 @@ function Navbar() {
   const handleLogoutUser = async()=>{
     try{
 
-       const logoutSuccess=await axios.get('/signout');
+       const logoutSuccess=await axios.put('/auth/signout');
        if(logoutSuccess){localStorage.clear(); window.location.pathname='/';}
 
     }catch(err){
@@ -66,12 +67,15 @@ function Navbar() {
     setAnchorElUser(null);
   }
   // const [isAdmin, setisAdmin] = useState(user.admin);
-
+  React.useEffect(() => {
+    dispatch(getMessages());
+  },[])
   
 
 
 
   return (
+    <>
     <AppBar position="sticky" top='0'  sx={Nav} >
       <Container maxWidth="xl" sx={{color:'black'}}>
         <Toolbar disableGutters sx={{color:'black'}}>
@@ -91,7 +95,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-           <Link to='/home' style={{textDecoration:'none',color:'black'}}>LOGO</Link> 
+           <Link to='/' style={{textDecoration:'none',color:'black'}}>LOGO</Link> 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -147,7 +151,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            <Link to='/home' style={{textDecoration:'none',color:'black'}}>LOGO</Link>
+            <Link to='/' style={{textDecoration:'none',color:'black'}}>LOGO</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -211,6 +215,7 @@ function Navbar() {
         </Toolbar>
       </Container>
     </AppBar>
+    <Outlet/></>
   );
 }
 export default Navbar;

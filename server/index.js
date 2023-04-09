@@ -1,18 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import signInRoute from "./routes/authentication/signin.js";
-import signOutRoute from "./routes/authentication/signout.js";
-import createMessages from "./routes/Messages/createMessages.js";
-import getMessages from "./routes/Messages/getMessages.js";
-import crtquery from './routes/Query/createQuery.js'
-import getquery from './routes/Query/getQuery.js'
-import crtquerysolution from './routes/Query/createsolution.js'
-import delquery from './routes/Query/dltquery.js'
-import deleteMessages from './routes/Messages/deleteMessages.js';
-import deleteQuery from './routes/Query/deleteQuery.js'
 import cookieParser from "cookie-parser";
 import cors from 'cors';
+import authRoute from "./routes/authentication/authRoute.js";
+import messageRoute from "./routes/Messages/messageRoute.js";
+import queryRoute from "./routes/Query/queryRoute.js";
 import { verifyToken } from "./verifyToken.js";
 
 const app=express();
@@ -42,17 +35,11 @@ const connection = ()=>{
 //Routes for app
 app.use(cookieParser());
 app.use(express.json()); 
-app.use("/signin", signInRoute);
-app.use("/signout", signOutRoute);
-app.use('/crtMessages', createMessages);
-app.use('/getMessages', getMessages);
-app.use('/crtquery', crtquery);
-app.use('/getquery', getquery);
-app.use('/delquery', deleteQuery);
-app.use('/crtquerysolution', crtquerysolution);
-// app.use('/delquery',delquery);
-app.use('/delMessages', deleteMessages);
-app.get("/verifyToken", verifyToken);
+
+app.use("/auth", authRoute);
+app.use("/messages", verifyToken, messageRoute);
+app.use("/queries", verifyToken, queryRoute);
+
 
 
 

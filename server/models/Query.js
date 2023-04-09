@@ -7,6 +7,10 @@ const QuerySchema = new Schema({
         type: String,
         required: true
     },
+    userId:{
+        type: String,
+        required: true
+    },
     querySolution:[
         {
             solution:{

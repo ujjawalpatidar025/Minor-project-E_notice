@@ -14,9 +14,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Box, IconButton,Button } from '@mui/material';
-import { deleteMessages } from '../Redux/features/messages/messageSlice';
+
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+import { deleteMessages } from '../Redux/features/messages/messagesSlice';
 
 const Accord = {
     backgroundColor: 'transparent',

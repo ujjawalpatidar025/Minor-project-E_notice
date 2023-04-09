@@ -7,8 +7,8 @@ import AccordianBox from "./AccordianBox";
 import { Paper, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
-export default function TabBar() {
-  const { noticeMessages } = useSelector((state) => state.messages);
+export default function TabBar(props) {
+  const { noticeMessages } = props
 //   const data = [
 //     {
 //       title: "Codechef",

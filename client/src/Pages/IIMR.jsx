@@ -1,22 +1,18 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TabBar from '../Components/TabBar';
-import { useDispatch } from 'react-redux';
-import { iimrMessages } from '../Redux/features/messages/messageSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 
 
 const IIMR = () => {
 
-  const dispatch=useDispatch();
+  const { noticeMessages } = useSelector((state) => state.messages);
 
-  useEffect(() => {
-    console.log("iimr")
-    dispatch(iimrMessages());
-  }, [])
   
 
   return (
@@ -24,7 +20,7 @@ const IIMR = () => {
   
 
       <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px',display: 'flex', alignItems: 'center',color:"rgb(33 109 48)" }}> IIMR Messages</Typography>
-      <TabBar/>
+      <TabBar noticeMessages={Object.values(noticeMessages).filter((messages)=>messages.institute==="IIMR")}/>
       
 
       

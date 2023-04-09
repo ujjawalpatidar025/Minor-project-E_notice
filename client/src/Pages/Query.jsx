@@ -18,11 +18,12 @@ import {
   crtQuery,
   deleteQuery,
   getQueries,
-} from "../Redux/features/query/queriesSlice";
+} from "../Redux/features/query/querySlice";
 
 const ElementQuery = (item) => {
   const dispatch = useDispatch();
   const [dopen, setdopen] = React.useState(false);
+  const {user}=useSelector((state)=>state.auth);
   const handleDelete = () => {
     setdopen(true);
   };
@@ -64,10 +65,11 @@ const ElementQuery = (item) => {
         >
           <AccountCircleIcon />
           <Typography marginX={2}>Anonymous</Typography>
-          <IconButton onClick={handleDelete}>
+          {console.log(user._id)}
+          {(user._id==item.userId || user.admin )&& <IconButton onClick={handleDelete}>
             {" "}
             <DeleteIcon fontSize="medium" style={{ color: "black" }} />
-          </IconButton>
+          </IconButton>}
           <Dialog
             open={dopen}
             onClose={handleClosed}
@@ -251,7 +253,7 @@ const Query = () => {
           overflow: "auto",
         }}
       >
-        {Object.values(allQueries).map((item, index) => {
+        {allQueries&&Object.values(allQueries).map((item, index) => {
           return <ElementQuery {...item} key={index}/>;
         })}
       </Box>

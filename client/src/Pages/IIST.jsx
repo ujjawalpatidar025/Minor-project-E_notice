@@ -1,10 +1,10 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TabBar from '../Components/TabBar';
-import { useDispatch } from 'react-redux';
-import { iistMessages } from '../Redux/features/messages/messageSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 
@@ -14,10 +14,8 @@ const IIST = () => {
 
   const dispatch=useDispatch();
 
-  useEffect(() => {
-    console.log("iist")
-    dispatch(iistMessages());
-  }, [])
+  const { noticeMessages } = useSelector((state) => state.messages);
+ 
   
 
   return (
@@ -25,7 +23,7 @@ const IIST = () => {
   
 
       <Typography variant='h4' color='primary' sx={{height:'5rem',padding:'20px' ,display: 'flex', alignItems: 'center',color:"rgb(33 109 48)"}}> IIST Messages</Typography>
-      <TabBar/>
+      <TabBar noticeMessages={Object.values(noticeMessages).filter((messages)=>messages.institute==="IIST")}/>
       
 
       
