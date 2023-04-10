@@ -31,17 +31,28 @@ const getIIMRMessages = async() => {
 
 
 const deleteMessage=async(id)=>{
-    const response=await axios.put(`/delMessages/${id}`)
-    console.log(response.data);
+    const response=await axios.put(`/messages/delMessages/${id}`)
     return response.data;
 }
 
+const getMessages=async()=>{
+    const response = await axios.get(`/messages/getMessages`);
+    return response.data;
+}
+
+
+const createMessages=async(messageData)=>{
+    const response = await axios.post(`/messages/crtMessages`, messageData);
+    return response.data;
+}
 const messageService = {
     getIIMRMessages,
     getIIPMessages,
     getIISTMessages,
     getAllMessages,
-    deleteMessage
+    deleteMessage,
+    getMessages,
+    createMessages
 }
 
 export default messageService

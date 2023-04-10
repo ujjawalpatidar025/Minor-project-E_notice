@@ -8,29 +8,29 @@ import axios from 'axios'
 
 const getAllQueries = async() => {
     
-    const response = await axios.get('/getquery')
+    const response = await axios.get('/queries/')
     return response.data
 }
 
 const getSpecificQuery =async(id)=>{
-    const response=await axios.get(`/getquery/${id}`)
+    const response=await axios.get(`/queries/${id}`)
     return response.data
 }
 
 const crtQuerySolution=async(d)=>{
-    const response=await axios.post(`/crtquerysolution/${d.id}`, d);
+    const response=await axios.post(`/queries/crtquerysolution/${d.id}`, d);
     return response.data
 }
 const crtQuery =async(data)=>{
-    const response=await axios.post(`/crtquery`, {query: data});
+    const response=await axios.post(`/queries/crtQuery`, {query: data});
     return response.data
 }
 
 
 
 
-const deleteQuery=async(id)=>{
-    const response=await axios.put(`/delQuery/${id}`)
+const deleteQuery=async(itemId)=>{
+    const response=await axios.put(`/queries/delQuery/${itemId}`)
     return response.data;
 }
 

@@ -21,6 +21,8 @@ import axios from 'axios';
 // import { useLocation } from 'react-router-dom';
 
 import {useNavigate} from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { createMessages } from '../Redux/features/messages/messagesSlice';
 
 function Copyright(props) {
     return (
@@ -38,6 +40,8 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function CrtMessage() {
+    const dispatch=useDispatch();
+    const {message}=useSelector((state)=>state.messages)
     const categoryDB = [
         "Notebook",
         "Desktop PC",
@@ -85,7 +89,7 @@ export default function CrtMessage() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log(data);
-        const createMessage= {
+        const createNoticeData= {
             heading: data.get('heading'),
             subHeading:data.get('subHeading'),
             batchYear: data.get('batchYear'),
@@ -93,30 +97,33 @@ export default function CrtMessage() {
             category:data.get('category'),
             institute:data.get('institute'),
         }
-    
+        dispatch(createMessages(createNoticeData));
+       
+        alert("Message created!")
+        window.location.href="/";
 
-        try{
-            axios.defaults.withCredentials=true;
-            // console.log(createMessage);
-            const response=await axios.post('/crtMessages', createMessage);
+        // try{
+        //     axios.defaults.withCredentials=true;
+        //     // console.log(createMessage);
+        //     const response=await axios.post('/crtMessages', createMessage);
            
-            setSuccessMessage(JSON.stringify((response.data)));
-            setOpen(true);
+        //     setSuccessMessage(JSON.stringify((response.data)));
+        //     setOpen(true);
         
 
 
-            //navigate('/home');
-            //alert(JSON.stringify((response.data)));
-            // console.log(`${JSON.stringify((response.data))}`);
-        }catch(error){
-            setSuccessMessage(error.response.data.message);
-           console.log(error.response.data.message);
-        }
+        //     //navigate('/home');
+        //     //alert(JSON.stringify((response.data)));
+        //     // console.log(`${JSON.stringify((response.data))}`);
+        // }catch(error){
+        //     setSuccessMessage(error.response.data.message);
+        //    console.log(error.response.data.message);
+        // }
     };
 
     return (
        <Box >
-
+        {/* {message&&alert(message)} */}
         <ThemeProvider theme={theme} >
             {<Snackbar open={open} autoHideDuration={3000}  onClose={handleClose}  >
         <Alert onClose={handleClose} variant="filled"  severity="success" sx={{ width: '100%' ,color:'white'}}>

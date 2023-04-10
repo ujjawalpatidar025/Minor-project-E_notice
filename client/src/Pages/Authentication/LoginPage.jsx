@@ -39,19 +39,18 @@ export default function LoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const loginData = {
+    const userData = {
       email: data.get("email"),
       password: data.get("password"),
     };
-    dispatch(login(loginData));
+    dispatch(login(userData));
   };
 
 
 
 
   return (
-    (isSuccess || user)? navigate('/home') :
-    (isLoading)?  <LoadingPage/> :  (<ThemeProvider theme={theme}>
+     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
@@ -229,6 +228,6 @@ export default function LoginPage() {
           </Box>
         </Grid>
       </Grid>
-    </ThemeProvider>)
+    </ThemeProvider>
   );
 }

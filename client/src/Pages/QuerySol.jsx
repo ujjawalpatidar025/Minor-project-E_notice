@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   crtQuerySolution,
   getSpecificQuery,
-} from "../Redux/features/query/queriesSlice";
+} from "../Redux/features/query/querySlice";
 
 
 const QuerySol = () => {
